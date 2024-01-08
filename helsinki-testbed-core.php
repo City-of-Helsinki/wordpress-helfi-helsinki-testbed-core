@@ -3,7 +3,7 @@
 Plugin Name:  Helsinki Testbed Core
 Plugin URI:   https://genero.fi
 Description:  Register Post Types and Taxonomies for site
-Version:      2.0.0
+Version:      2.0.1
 Author:       Genero
 Author URI:   https://genero.fi/
 License:      MIT License
@@ -70,7 +70,7 @@ class PostTypes
 		add_action('init', function () {
             register_post_type('person', array(
 				'labels' => array(
-					'name' => 'Person',
+					'name' => 'Persons',
 					'singular_name' => 'Person',
 				),
 				'public' => false,
@@ -82,15 +82,24 @@ class PostTypes
 			));
         });
 
-		add_filter('manage_post_posts_columns', function($columns){
-			return array_merge(array('thumbnail' => ''), $columns);
+		add_filter('manage_person_posts_columns', function($columns){
+			$sorted = array();
+			foreach ($columns as $key => $value) {
+				$sorted[$key] = $value;
+
+				if ( 'cb' === $key ) {
+					$sorted['thumbnail'] = '';
+				}
+			}
+
+			return $sorted;
 		});
 
-		add_action('manage_post_posts_custom_column', function($column, $post_id){
+		add_action('manage_person_posts_custom_column', function($column, $post_id){
 			if ('thumbnail' === $column) {
 				echo get_the_post_thumbnail($post_id, 'thumbnail');
 			}
-		});
+		}, 10, 2);
     }
 
     public function adminHead()

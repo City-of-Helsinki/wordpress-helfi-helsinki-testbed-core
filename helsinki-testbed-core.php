@@ -3,7 +3,7 @@
 Plugin Name:  Helsinki Testbed Core
 Plugin URI:   https://genero.fi
 Description:  Register Post Types and Taxonomies for site
-Version:      2.0.1
+Version:      2.0.2
 Author:       Genero
 Author URI:   https://genero.fi/
 License:      MIT License
@@ -123,4 +123,23 @@ function init_plugin() {
 	$plugin->register();
 
 	add_action('admin_head', [$plugin, 'adminHead']);
+
+	add_filter( 'hds_wp_admin_scripts_dependencies', __NAMESPACE__ . '\\hds_wp_admin_scripts_dependencies' );
+	add_action( 'enqueue_block_editor_assets', __NAMESPACE__ . '\\editor_assets', 0 );
+}
+
+function editor_assets(): void {
+	$dir = plugin_dir_url( __FILE__ );
+
+	wp_enqueue_script(
+        'testbed-core-editor',
+		$dir . 'assets/admin/js/editor.js',
+		array(),
+		false,
+		true
+    );
+}
+
+function hds_wp_admin_scripts_dependencies(array $dependencies): array {
+	return array_merge( $dependencies, array( 'testbed-core-editor' ) );
 }

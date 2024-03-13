@@ -135,7 +135,7 @@ function editor_assets(): void {
         'testbed-core-editor',
 		$dir . 'assets/admin/js/editor.js',
 		array(),
-		false,
+		'2.0.2',
 		true
     );
 }

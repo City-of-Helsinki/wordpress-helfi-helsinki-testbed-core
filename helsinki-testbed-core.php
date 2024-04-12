@@ -3,7 +3,7 @@
 Plugin Name:  Helsinki Testbed Core
 Plugin URI:   https://genero.fi
 Description:  Register Post Types and Taxonomies for site
-Version:      2.0.2
+Version:      2.1.0
 Author:       Genero
 Author URI:   https://genero.fi/
 License:      MIT License
@@ -124,22 +124,17 @@ function init_plugin() {
 
 	add_action('admin_head', [$plugin, 'adminHead']);
 
-	add_filter( 'hds_wp_admin_scripts_dependencies', __NAMESPACE__ . '\\hds_wp_admin_scripts_dependencies' );
-	add_action( 'enqueue_block_editor_assets', __NAMESPACE__ . '\\editor_assets', 0 );
+	add_filter( 'helsinki_wp_disallowed_blocks', __NAMESPACE__ . '\\filter_helsinki_wp_disallowed_blocks' );
 }
 
-function editor_assets(): void {
-	$dir = plugin_dir_url( __FILE__ );
+function filter_helsinki_wp_disallowed_blocks( array $disallowed ): array {
+	if ( isset( $disallowed['common']['core/media-text'] ) ) {
+		unset( $disallowed['common']['core/media-text'] );
+	}
 
-	wp_enqueue_script(
-        'testbed-core-editor',
-		$dir . 'assets/admin/js/editor.js',
-		array(),
-		'2.0.2',
-		true
-    );
-}
+	if ( isset( $disallowed['post_types']['post']['core/group'] ) ) {
+		unset( $disallowed['post_types']['post']['core/group'] );
+	}
 
-function hds_wp_admin_scripts_dependencies(array $dependencies): array {
-	return array_merge( $dependencies, array( 'testbed-core-editor' ) );
+	return $disallowed;
 }

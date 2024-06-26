@@ -7,6 +7,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 return array(
 	'post-types' => array(
 		'page',
-		'person',
+		'person' => array(
+			'post-type',
+			'posts-table-columns',
+			'post-meta',
+			'save-post',
+			'metabox',
+			'init',
+		),
 	),
 );

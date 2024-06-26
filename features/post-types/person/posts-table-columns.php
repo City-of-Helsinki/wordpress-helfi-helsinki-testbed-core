@@ -8,42 +8,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-/**
-  * Init
-  */
-add_action( 'helsinki_testbed_core_loaded', __NAMESPACE__ . '\\init' );
-function init(): void {
-	add_action( 'init', __NAMESPACE__ . '\\register_cpt_person' );
-
-	$cpt = cpt_person_name();
-
-	add_filter( "manage_{$cpt}_posts_columns", __NAMESPACE__ . '\\posts_table_columns' );
-	add_action( "manage_{$cpt}_posts_custom_column", __NAMESPACE__ . '\\posts_table_columns_content', 10, 2 );
-	add_action( 'admin_head', __NAMESPACE__ . '\\posts_table_columns_style' );
-}
-
-function cpt_person_name(): string {
-	return 'person';
-}
-
-function register_cpt_person(): void {
-	register_post_type(
-		cpt_person_name(),
-		array(
-			'labels' => array(
-				'name' => __( 'People', 'helsinki-testbed-core' ),
-				'singular_name' => __( 'Persons', 'helsinki-testbed-core' ),
-			),
-			'public' => false,
-			'show_ui' => true,
-			'has_archive' => false,
-			'show_in_rest' => true,
-			'supports' => array( 'title', 'thumbnail' ),
-			'menu_icon' => 'dashicons-admin-users',
-		)
-	);
-}
-
 function posts_table_columns( array $columns ): array {
 	$sorted = array();
 	foreach ($columns as $key => $value) {

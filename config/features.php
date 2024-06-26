@@ -16,4 +16,10 @@ return array(
 			'init',
 		),
 	),
+	'term-mapping' => array(
+		'term-meta',
+		'save-term',
+		'redirection',
+		'init'
+	),
 );

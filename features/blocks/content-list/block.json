@@ -1,0 +1,53 @@
+{
+  "apiVersion": 2,
+  "version": "1.0.1",
+  "icon": "format-aside",
+  "title": "Content list",
+  "description": "Show a list of content...",
+  "name": "acf/content-list",
+  "textdomain": "helsinki-testbed-core",
+  "category": "helsinki-testbed-core",
+  "supports": {
+    "align": [ "full", "wide" ]
+  },
+  "attributes": {
+    "data": {
+      "type": "object",
+      "default": {}
+    },
+    "title": {
+      "type": "string",
+      "default": ""
+    },
+    "category": {
+      "type": "integer",
+      "default": 0
+    },
+    "posts_per_page": {
+      "type": "integer",
+      "default": 0
+    },
+    "order_by": {
+      "type": "string",
+      "default": "Date"
+    },
+    "order": {
+      "type": "string",
+      "default": "DESC"
+    },
+    "use_pagination": {
+      "type": "boolean",
+      "default": false
+    },
+    "exclude_quiet_posts": {
+      "type": "boolean",
+      "default": false
+    },
+    "align": {
+      "type": "string",
+      "default": ""
+    }
+  },
+  "script": "helsinki-testbed-core-content-list-block",
+  "editorScript": "file:block.js"
+}

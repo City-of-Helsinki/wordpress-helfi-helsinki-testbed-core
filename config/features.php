@@ -16,6 +16,11 @@ return array(
 			'init',
 		),
 	),
+	'quiet-posts' => array(
+		'post-meta',
+		'save-post',
+		'init',
+	),
 	'term-mapping' => array(
 		'term-meta',
 		'save-term',

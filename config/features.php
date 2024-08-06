@@ -5,6 +5,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 return array(
+	'mandatory-excerpt' => array(
+		'init',
+	),
 	'post-types' => array(
 		'page',
 		'person' => array(

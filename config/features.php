@@ -5,6 +5,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 return array(
+	'blocks' => array(
+		'init',
+	),
 	'mandatory-excerpt' => array(
 		'init',
 	),

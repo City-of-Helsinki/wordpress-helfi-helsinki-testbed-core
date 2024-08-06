@@ -19,6 +19,7 @@ return array(
 	'term-mapping' => array(
 		'term-meta',
 		'save-term',
+		'term-list-columns',
 		'redirection',
 		'init'
 	),

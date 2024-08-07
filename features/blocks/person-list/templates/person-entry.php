@@ -9,16 +9,24 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 ?>
 <div class="<?php echo esc_attr( implode( ' ', $entry_classes ) ); ?>">
-	<?php
-		if ( $thumbnail ) {
-			printf(
-				'<figure class="wp-block-image is-style-outline">%s</figure>',
-				$thumbnail
-			);
-		}
-	?>
+	<div class="person-teaser__image">
+		<?php
+			if ( $thumbnail ) {
+				printf(
+					'<figure class="wp-block-image is-style-outline">%s</figure>',
+					$thumbnail
+				);
+			} else {
+				printf(
+					'<img src="%s" alt="%s">',
+					esc_url( $placeholder_url ),
+					esc_attr( $title )
+				);
+			}
+		?>
+	</div>
 
-	<ul>
+	<ul class="person-teaser__details">
 	    <li>
 			<h3><?php echo esc_html( $title ); ?></h3>
 		</li>

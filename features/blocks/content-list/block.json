@@ -1,6 +1,5 @@
 {
   "apiVersion": 2,
-  "version": "1.0.0",
   "icon": "format-aside",
   "title": "Content list",
   "description": "Show a list of content...",
@@ -48,6 +47,5 @@
       "default": ""
     }
   },
-  "script": "helsinki-testbed-core-content-list-block",
   "editorScript": "file:block.js"
 }

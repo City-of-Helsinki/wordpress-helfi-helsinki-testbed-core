@@ -161,7 +161,7 @@
 
 })(window.wp);
 
-function mapAcfDataToDirectAttributes(block, blockType, innerHTML) {
+function mapLegacyContentListAcfData(block, blockType, innerHTML) {
   if (blockType.name == 'acf/content-list') {
 
     if ( block.data.title ) {
@@ -198,5 +198,5 @@ function mapAcfDataToDirectAttributes(block, blockType, innerHTML) {
 wp.hooks.addFilter(
   'blocks.getBlockAttributes',
   'helsinki-testbed-core/content-list-data-mapping',
-  mapAcfDataToDirectAttributes
+  mapLegacyContentListAcfData
 );

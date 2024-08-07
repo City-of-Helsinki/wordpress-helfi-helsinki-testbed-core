@@ -43,6 +43,7 @@ function person_entry( WP_Post $post, string $layout ): void {
 	$thumbnail = get_the_post_thumbnail( $post, 'post-thumbnail', [
 		'sizes' => '(max-width: 640px) 100vw, (max-width: 1024px) 33vw, 216px'
 	]);
+	$placeholder_url = apply_filters( 'helsinki_testbed_core_images_url', '' ) . 'person-placeholder.png';
 
 	$entry_classes = [
 		'teaser',

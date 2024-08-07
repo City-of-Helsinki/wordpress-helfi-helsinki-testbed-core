@@ -1,0 +1,57 @@
+{
+  "apiVersion": 2,
+  "icon": "align-pull-left",
+  "name": "hds/icon-and-text",
+  "description": "Display an icon and text",
+  "textdomain": "helsinki-testbed-core",
+  "category": "helsinki-testbed-core",
+  "supports": {
+    "align": false,
+    "alignWide": false,
+    "customClassName": true,
+    "html": false,
+    "inserter": true,
+    "multiple": true,
+    "reusable": false
+  },
+  "parent": null,
+  "attributes": {
+    "iconName": {
+      "type": "string",
+      "default": ""
+    },
+    "heading": {
+      "type": "string",
+      "default": ""
+    },
+    "body": {
+      "type": "string",
+      "default": ""
+    },
+    "iconColor": {
+      "type": "string",
+      "default": ""
+    },
+    "customIconColor": {
+      "type": "string",
+      "default": ""
+    },
+    "textColor": {
+      "type": "string",
+      "default": ""
+    },
+    "customTextColor": {
+      "type": "string",
+      "default": ""
+    },
+    "backgroundColor": {
+      "type": "string",
+      "default": ""
+    },
+    "customBackgroundColor": {
+      "type": "string",
+      "default": ""
+    }
+  },
+  "editorScript": "file:block.js"
+}

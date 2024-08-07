@@ -9,7 +9,9 @@ return [
 		'render_callback' => 'ContentList\render',
 	],
     // 'highlight' => [],
-    // 'icon-and-text' => [],
+    'icon-and-text' => [
+		'render_callback' => 'IconAndText\render',
+	],
     'person-list' => [
 		'render_callback' => 'PersonList\render',
 	],

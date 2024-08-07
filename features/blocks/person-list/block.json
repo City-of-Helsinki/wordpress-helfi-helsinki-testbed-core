@@ -1,0 +1,28 @@
+{
+  "apiVersion": 2,
+  "icon": "admin-users",
+  "title": "Person list",
+  "description": "Show a list of persons...",
+  "name": "acf/person-list",
+  "textdomain": "helsinki-testbed-core",
+  "category": "helsinki-testbed-core",
+  "supports": {
+    "align": [ "full", "wide" ]
+  },
+  "attributes": {
+    "data": {
+      "type": "object",
+      "default": {}
+    },
+    "layout": {
+      "type": "string",
+      "default": "vertical"
+    },
+    "persons": {
+      "type": "array",
+      "default": []
+    }
+  },
+  "editorScript": "file:block.js",
+  "editorStyle": "file:editor.css"
+}

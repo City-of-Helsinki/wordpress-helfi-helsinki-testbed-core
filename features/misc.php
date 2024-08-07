@@ -9,6 +9,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 add_filter( 'redirect_canonical', __NAMESPACE__ . '\\fix_pagination_on_singles' );
-function fix_pagination_on_singles() {
+function fix_pagination_on_singles( $redirect_url ) {
     return ( is_single() && get_query_var( 'paged' ) ) ? false : $redirect_url;
 }

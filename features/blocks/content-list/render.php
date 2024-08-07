@@ -118,15 +118,16 @@ function posts_query( array $attributes ): WP_Query {
 		$query['paged'] = get_query_var('paged') ?: 1;
 	}
 
-    if ( attribute_value( $attributes, 'exclude_quiet_posts', false, 'boolval' ) ) {
+	$quiet_post_key = apply_filters( 'helsinki_testbed_core_quiet_post_meta_key', '' );
+    if ( $quiet_post_key && attribute_value( $attributes, 'exclude_quiet_posts', false, 'boolval' ) ) {
         $query['meta_query'][] = [
             'relation' => 'OR',
             [
-                'key' => 'quiet_post',
+                'key' => $quiet_post_key,
                 'compare' => 'NOT EXISTS'
             ],
             [
-                'key' => 'quiet_post',
+                'key' => $quiet_post_key,
                 'value' => '1',
                 'compare' => '!='
             ],

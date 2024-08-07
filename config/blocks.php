@@ -10,5 +10,7 @@ return [
 	],
     // 'highlight' => [],
     // 'icon-and-text' => [],
-    // 'person-list' => [],
+    'person-list' => [
+		'render_callback' => 'PersonList\render',
+	],
 ];

@@ -8,6 +8,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+use CityOfHelsinki\WordPress\Testbed\Core\Features\Blocks;
 use WP_Post;
 use WP_Query;
 
@@ -56,8 +57,7 @@ function post_entry( WP_Post $post, int $h_level ): void {
 
     $entry_classes = [
 		'teaser',
-		'type',
-		$post_type,
+		"type-{$post_type}",
 		"type-{$post_type}--teaser",
 	];
 
@@ -72,11 +72,11 @@ function not_found(): void {
 }
 
 function list_title( array $attributes ): string {
-	return attribute_value( $attributes, 'title', '', 'strval' );
+	return Blocks\attribute_value( $attributes, 'title', '', 'strval' );
 }
 
 function use_pagination( array $attributes ): bool {
-	return attribute_value( $attributes, 'use_pagination', false, 'boolval' );
+	return Blocks\attribute_value( $attributes, 'use_pagination', false, 'boolval' );
 }
 
 function pagination( WP_Query $query, string $fragment = '' ): void {
@@ -106,9 +106,9 @@ function pagination( WP_Query $query, string $fragment = '' ): void {
 
 function posts_query( array $attributes ): WP_Query {
 	$query = array(
-		'posts_per_page' => attribute_value( $attributes, 'posts_per_page', 3, 'absint' ),
-        'order_by' => attribute_value( $attributes, 'order_by', ['date'], 'strval' ),
-        'order' => attribute_value( $attributes, 'order', 'DESC', 'strval' ),
+		'posts_per_page' => Blocks\attribute_value( $attributes, 'posts_per_page', 3, 'absint' ),
+        'order_by' => Blocks\attribute_value( $attributes, 'order_by', ['date'], 'strval' ),
+        'order' => Blocks\attribute_value( $attributes, 'order', 'DESC', 'strval' ),
         'post_type' => 'post',
         'use_pagination' => use_pagination( $attributes ),
         'post_status' => 'publish',
@@ -119,7 +119,7 @@ function posts_query( array $attributes ): WP_Query {
 	}
 
 	$quiet_post_key = apply_filters( 'helsinki_testbed_core_quiet_post_meta_key', '' );
-    if ( $quiet_post_key && attribute_value( $attributes, 'exclude_quiet_posts', false, 'boolval' ) ) {
+    if ( $quiet_post_key && Blocks\attribute_value( $attributes, 'exclude_quiet_posts', false, 'boolval' ) ) {
         $query['meta_query'][] = [
             'relation' => 'OR',
             [
@@ -134,7 +134,7 @@ function posts_query( array $attributes ): WP_Query {
         ];
     }
 
-	$category = attribute_value( $attributes, 'category', 0, 'absint' );
+	$category = Blocks\attribute_value( $attributes, 'category', 0, 'absint' );
     if ( $category ) {
         $query['tax_query'][] = [
             'taxonomy' => 'category',
@@ -144,14 +144,4 @@ function posts_query( array $attributes ): WP_Query {
     }
 
 	return new WP_Query( $query );
-}
-
-function attribute_value( array $attributes, string $key, $default, callable $cast ) {
-	$legacy = isset( $attributes['data'][$key] )
-		? call_user_func( $cast, $attributes['data'][$key] )
-		: null;
-
-	$value = $attributes[$key] ?: null;
-
-	return $value ?: $legacy ?: $default;
 }

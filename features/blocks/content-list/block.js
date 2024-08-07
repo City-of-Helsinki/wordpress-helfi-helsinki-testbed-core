@@ -80,7 +80,6 @@
       }
     }
 
-
     return inspectorControls([
       createElement(TextControl, {
         label: __('Title', 'helsinki-testbed-core'),

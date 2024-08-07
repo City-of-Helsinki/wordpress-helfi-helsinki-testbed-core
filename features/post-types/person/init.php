@@ -23,4 +23,8 @@ function init(): void {
 
 	add_action( 'add_meta_boxes_' . $cpt, __NAMESPACE__ . '\\register_person_metabox' );
 	add_action( 'save_post_' . $cpt, __NAMESPACE__ . '\\save_person_post' );
+
+	add_filter( 'helsinki_testbed_core_person_cpt_name', __NAMESPACE__ . '\\cpt_person_name' );
+	add_filter( 'helsinki_testbed_core_person_email', __NAMESPACE__ . '\\provide_person_email', 10, 2 );
+	add_filter( 'helsinki_testbed_core_person_description', __NAMESPACE__ . '\\provide_person_description', 10, 2 );
 }

@@ -35,6 +35,10 @@ function update_person_email( int $post_id, $email = '' ): bool {
 	return update_post_meta( $post_id, person_email_meta_key(), $email ) ? true : false;
 }
 
+function provide_person_email( string $value, int $post_id ): string {
+	return person_email( $post_id );
+}
+
 /**
   * Description
   */
@@ -50,4 +54,8 @@ function update_person_description( int $post_id, $description = '' ): bool {
 	$description = sanitize_textarea_field( $description );
 
 	return update_post_meta( $post_id, person_description_meta_key(), $description ) ? true : false;
+}
+
+function provide_person_description( string $value, int $post_id ): string {
+	return person_description( $post_id );
 }

@@ -32,5 +32,4 @@ if ( ! defined( 'ABSPATH' ) ) {
 			pagination( $query, $block_id );
 		}
 	?>
-
 </div>

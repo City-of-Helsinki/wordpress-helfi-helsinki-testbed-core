@@ -52,6 +52,7 @@ function post_entry( WP_Post $post, int $h_level ): void {
     $thumbnail = get_the_post_thumbnail( $post, 'large', [
         'sizes' => '(max-width: 576px) 100vw, (max-width: 992px) 50vw (max-width: 1440px) 33vw, 384px'
     ]);
+	$placeholder_url = apply_filters( 'helsinki_testbed_core_images_url', '' ) . 'post-placeholder.png';
 
 	$h_level = max(min($h_level, 6), 1);
 

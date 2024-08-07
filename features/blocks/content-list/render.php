@@ -21,8 +21,12 @@ function render( $attributes, $content ) : string {
 
 function create_html( array $attributes, WP_Query $query ): void {
 	if ( $query->have_posts() ) {
+		$block_anchor = $attributes['anchor'] ?? '';
+		$block_id = use_pagination( $attributes ) ? 'listing' : $block_anchor;
+
 		$block_classes = $attributes['className'] ?? '';
 		$title = list_title( $attributes );
+		$use_pagination = use_pagination( $attributes );
 
 		include plugin_dir_path( __FILE__ ) . 'templates/posts-grid.php';
 	} else {
@@ -34,12 +38,34 @@ function posts_grid( WP_Query $query ): void {
 	include plugin_dir_path( __FILE__ ) . 'templates/posts-grid.php';
 }
 
-function post_entry(): void {
+function post_entry( WP_Post $post, int $h_level ): void {
+    $label = '';
+    $id = get_the_ID( $post );
+    $post_type = get_post_type( $post );
+    $title = get_the_title( $post );
+    $aria_label = $title;
+    $excerpt = get_the_excerpt( $post );
+    $categories = get_the_category( $post );
+    $tags = get_the_tags( $post );
+    $permalink = get_permalink( $post );
+    $thumbnail = get_the_post_thumbnail( $post, 'large', [
+        'sizes' => '(max-width: 576px) 100vw, (max-width: 992px) 50vw (max-width: 1440px) 33vw, 384px'
+    ]);
+
+	$h_level = max(min($h_level, 6), 1);
+
+    $entry_classes = [
+		'teaser',
+		'type',
+		$post_type,
+		"type-{$post_type}--teaser",
+	];
+
 	include plugin_dir_path( __FILE__ ) . 'templates/post-entry.php';
 }
 
 function not_found(): void {
-	echo sprintf(
+	printf(
 		'<div class="acf-block-placeholder text-center">%s</div>',
 		esc_html__( 'No results found...', 'helsinki-testbed-core' )
 	);
@@ -53,8 +79,29 @@ function use_pagination( array $attributes ): bool {
 	return attribute_value( $attributes, 'use_pagination', false, 'boolval' );
 }
 
-function pagination( WP_Query $query ): void {
-	include plugin_dir_path( __FILE__ ) . 'templates/pagination.php';
+function pagination( WP_Query $query, string $fragment = '' ): void {
+	if ( $query->max_num_pages > 1 ) {
+		$args = [
+			'base' => str_replace(999999, '%#%', esc_url(get_pagenum_link(999999))),
+			'format' => '?paged=%#%',
+			'current' => max(1, get_query_var('paged')),
+			'total' => $query->max_num_pages,
+			'type' => 'list',
+			'add_fragment' => $fragment ? "#{$fragment}" : null,
+		];
+
+		$next_icon = apply_filters( 'helsinki_testbed_core_svg_icon', '', 'angle-right', __('Next page', 'helsinki-testbed-core') );
+		if ( $next_icon ) {
+			$args['next_text'] = $next_icon;
+		}
+
+		$prev_icon = apply_filters( 'helsinki_testbed_core_svg_icon', '', 'angle-left', __('Previous page', 'helsinki-testbed-core') );
+		if ( $prev_icon ) {
+			$args['prev_text'] = $prev_icon;
+		}
+
+		include plugin_dir_path( __FILE__ ) . 'templates/pagination.php';
+	}
 }
 
 function posts_query( array $attributes ): WP_Query {

@@ -27,6 +27,7 @@ function filter_names(): array {
 		'is_debug',
 		'asset_version',
 		'assets_url',
+		'images_url',
 		'script_url',
 		'style_url',
 		'path_to_file',

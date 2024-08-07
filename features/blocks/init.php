@@ -15,9 +15,6 @@ add_action( 'helsinki_testbed_core_loaded', __NAMESPACE__ . '\\init' );
 function init() : void {
 	add_action( 'init', __NAMESPACE__ . '\\register_blocks', 10 );
 	add_action( 'block_categories_all', __NAMESPACE__ . '\\register_categories', 10, 2 );
-
-	// add_action( 'enqueue_block_editor_assets', __NAMESPACE__ . '\\editor_assets' );
-	// add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\\public_assets', 11 );
 }
 
 /**
@@ -66,4 +63,15 @@ function path_to_block_callback( string $name ) : string {
 		'helsinki_testbed_core_path_to_php_file',
 		array( 'features', 'blocks', $name, 'render' )
 	);
+}
+
+function attribute_value( array $attributes, string $key, $default, callable $cast = null ) {
+	$legacy = isset( $attributes['data'][$key] ) ? $attributes['data'][$key] : null;
+	if ( ! is_null( $legacy ) && $cast ) {
+		$legacy = call_user_func( $cast, $attributes['data'][$key] );
+	}
+
+	$value = $attributes[$key] ?: null;
+
+	return $value ?: $legacy ?: $default;
 }

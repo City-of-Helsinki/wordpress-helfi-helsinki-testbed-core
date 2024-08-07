@@ -29,7 +29,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 			</div>
 	  	<?php else : ?>
 			<div class="teaser__thumbnail teaser__thumbnail--placeholder">
-				<img src="" alt="<?php echo esc_attr( $label ); ?>" />
+				<img src="<?php echo esc_url( $placeholder_url ); ?>" alt="<?php echo esc_attr( $label ); ?>" />
 			</div>
 	    <?php endif; ?>
 

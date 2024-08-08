@@ -5,8 +5,8 @@ import gulpSass from 'gulp-sass';
 import gulp from 'gulp';
 import rename from 'gulp-rename';
 import cleanCSS from 'gulp-clean-css';
-import postCSS from 'gulp-postcss';
-import inlineSVG from 'postcss-inline-svg';
+import inlineSvg from 'gulp-inline-svg';
+import svgMin from 'gulp-svgmin';
 import prefix from 'gulp-autoprefixer';
 import concat from 'gulp-concat';
 import uglify from 'gulp-uglify';
@@ -59,6 +59,15 @@ gulp.task('scripts', function () {
    });
 });
 
+gulp.task('inline-svg', function() {
+    return gulp.src(path.join(ASSETS, '/icons/**/*.svg'))
+      .pipe(svgMin())
+      .pipe(inlineSvg({
+        template: path.join(SOURCE, '/common/inline-svg.mustache')
+      }))
+      .pipe(gulp.dest(path.join(SOURCE, '/common/scss/common')));
+});
+
 gulp.task('styles', function () {
 	return mapFolders(function(folder) {
 		return gulp.src(path.join(SOURCE, folder, '/scss/**/*.scss'))
@@ -67,7 +76,6 @@ gulp.task('styles', function () {
 			.pipe(prefix())
       .pipe(gulp.dest(ASSETS))
 			.pipe(cleanCSS(cssOptions))
-      .pipe(postCSS([inlineSVG]))
 			.pipe(rename(folder + '/css/styles.min.css'))
 			.pipe(gulp.dest(ASSETS));
 	});
@@ -78,4 +86,4 @@ gulp.task('watch', function () {
   gulp.watch(SOURCE, gulp.parallel('scripts'));
 });
 
-gulp.task('default', gulp.parallel('styles', 'scripts'));
+gulp.task('default', gulp.parallel('inline-svg', 'styles', 'scripts'));

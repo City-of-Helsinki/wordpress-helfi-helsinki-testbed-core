@@ -25,7 +25,10 @@ function create_html( array $attributes, WP_Query $query ): void {
 		$block_anchor = $attributes['anchor'] ?? '';
 		$block_id = use_pagination( $attributes ) ? 'listing' : $block_anchor;
 
-		$block_classes = $attributes['className'] ?? '';
+		$block_classes = array_filter( array(
+			'wp-block-content-list',
+			$attributes['className'] ?? '',
+		) );
 		$title = list_title( $attributes );
 		$use_pagination = use_pagination( $attributes );
 

@@ -32,23 +32,11 @@
       "type": "string",
       "default": ""
     },
-    "customIconColor": {
-      "type": "string",
-      "default": ""
-    },
     "textColor": {
       "type": "string",
       "default": ""
     },
-    "customTextColor": {
-      "type": "string",
-      "default": ""
-    },
     "backgroundColor": {
-      "type": "string",
-      "default": ""
-    },
-    "customBackgroundColor": {
       "type": "string",
       "default": ""
     }

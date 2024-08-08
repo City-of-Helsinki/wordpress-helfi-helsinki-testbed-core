@@ -52,7 +52,7 @@
     margin-bottom: 20px;
 
     @include breakpoint('large') {
-      flex-basis: auto;
+      flex-basis: 60%;
       flex-shrink: 1;
       margin-bottom: 0;
     }

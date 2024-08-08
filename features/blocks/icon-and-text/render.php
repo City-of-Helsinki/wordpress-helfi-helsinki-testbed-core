@@ -12,7 +12,7 @@ use CityOfHelsinki\WordPress\Testbed\Core\Features\Blocks;
 
 function render( $attributes, $content ) : string {
 	$classes = array_filter( array(
-		'wp-block-hds-icon',
+		'wp-block-hds-icon-and-text',
 		$attributes['className'] ?? '',
 	) );
 

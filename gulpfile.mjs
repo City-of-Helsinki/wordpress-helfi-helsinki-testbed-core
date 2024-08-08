@@ -5,6 +5,8 @@ import gulpSass from 'gulp-sass';
 import gulp from 'gulp';
 import rename from 'gulp-rename';
 import cleanCSS from 'gulp-clean-css';
+import postCSS from 'gulp-postcss';
+import inlineSVG from 'postcss-inline-svg';
 import prefix from 'gulp-autoprefixer';
 import concat from 'gulp-concat';
 import uglify from 'gulp-uglify';
@@ -60,11 +62,12 @@ gulp.task('scripts', function () {
 gulp.task('styles', function () {
 	return mapFolders(function(folder) {
 		return gulp.src(path.join(SOURCE, folder, '/scss/**/*.scss'))
-			.pipe(sass(sassOptions))
+			.pipe(sass(sassOptions).on('error', sass.logError))
 			.pipe(concat(folder + '/css/styles.css'))
 			.pipe(prefix())
       .pipe(gulp.dest(ASSETS))
 			.pipe(cleanCSS(cssOptions))
+      .pipe(postCSS([inlineSVG]))
 			.pipe(rename(folder + '/css/styles.min.css'))
 			.pipe(gulp.dest(ASSETS));
 	});

@@ -73,7 +73,7 @@ function not_found(): void {
 }
 
 function list_title( array $attributes ): string {
-	return Blocks\attribute_value( $attributes, 'title', '', 'strval' );
+	return Blocks\attribute_value( $attributes, 'title', '' );
 }
 
 function use_pagination( array $attributes ): bool {
@@ -108,8 +108,8 @@ function pagination( WP_Query $query, string $fragment = '' ): void {
 function posts_query( array $attributes ): WP_Query {
 	$query = array(
 		'posts_per_page' => Blocks\attribute_value( $attributes, 'posts_per_page', 3, 'absint' ),
-        'order_by' => Blocks\attribute_value( $attributes, 'order_by', ['date'], 'strval' ),
-        'order' => Blocks\attribute_value( $attributes, 'order', 'DESC', 'strval' ),
+        'order_by' => Blocks\attribute_value( $attributes, 'order_by', ['date'] ),
+        'order' => Blocks\attribute_value( $attributes, 'order', 'DESC' ),
         'post_type' => 'post',
         'use_pagination' => use_pagination( $attributes ),
         'post_status' => 'publish',

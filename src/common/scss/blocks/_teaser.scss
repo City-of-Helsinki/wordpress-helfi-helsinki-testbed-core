@@ -1,0 +1,72 @@
+.teaser {
+  &__link {
+    color: inherit;
+    text-decoration: none;
+
+    &:hover,
+    &:active,
+    &:focus {
+      color: inherit;
+    }
+  }
+
+  &__thumbnail {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: math.div(310, 382) * 100%;
+
+    img {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    &--placeholder {
+      // @todo Placeholder styles need to be defined and implemented.
+      background-color: var(--color-black-10);
+    }
+  }
+
+  &__thumbnail + .teaser__content {
+    margin-top: $spacing-layout-xs;
+  }
+
+  &__title {
+    font-size: 1.5rem;
+    line-height: 1.2;
+    margin: 0;
+  }
+
+  &__excerpt {
+    font-size: 1.125rem;
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  &__title + .teaser__excerpt {
+    margin-top: $spacing-layout-2-xs;
+  }
+
+  &__tags {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+
+    li {
+      display: inline-block;
+      margin-right: $spacing-layout-2-xs;
+      text-decoration: underline;
+
+      a {
+        color: inherit;
+      }
+    }
+  }
+
+  &__content + .teaser__tags {
+    margin-top: $spacing-2-xs;
+  }
+}

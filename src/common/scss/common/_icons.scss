@@ -1,18 +1,15 @@
-$icons: 'angle-down', 'alert-circle', 'book', 'calendar-clock', 'car',
-  'car-wifi', 'check', 'clock', 'cogwheel', 'drone', 'ed-tech', 'envelope',
-  'globe', 'group', 'heart', 'home', 'home-solar-panels', 'kiertotalous',
-  'ship', 'speechbubble', 'tree';
+@import 'svg';
+
+$icons: 'book', 'calendar-clock', 'car', 'car-wifi', 'drone', 'ed-tech', 'home-solar-panels', 'kiertotalous', 'ship', 'tree';
 
 @each $icon in $icons {
-  .has-#{$icon}-icon {
-    background-image: svg-load('./images/icons/#{$icon}.svg');
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: 50% 50%;
-    @each $color-name, $color-value in $color-palette {
-      &.has-#{$color-name}-color {
-        background-image: svg-load('../../icons/#{$icon}.svg', fill=$color-value);
-      }
-    }
+  .hds-icon--#{$icon} {
+    @include inline-svg($icon);
+  }
+}
+
+@each $color-name, $color-value in $color-palette {
+  .has-#{$color-name}-color .testbed-icon {
+    background-color: #{$color-value};
   }
 }

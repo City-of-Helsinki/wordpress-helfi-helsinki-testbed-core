@@ -1,0 +1,10 @@
+$svg-icons: (
+{{#svgs}}
+  '{{{name}}}': "{{{inline}}}",
+{{/svgs}}
+);
+
+@mixin inline-svg($name) {
+	-webkit-mask-image: url(map-get( $svg-icons, $name ));
+	mask-image: url(map-get( $svg-icons, $name ));
+}

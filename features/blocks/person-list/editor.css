@@ -1,4 +1,4 @@
-.editor-styles-wrapper .wp-block.wp-block-acf-person-list {
+.editor-styles-wrapper .wp-block.wp-block-acf-person-list.is-selected {
   background-color: #f7f7f7;
   padding: 1rem;
 }

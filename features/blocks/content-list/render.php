@@ -61,8 +61,8 @@ function post_entry( WP_Post $post, int $h_level ): void {
 
     $entry_classes = [
 		'teaser',
+		"teaser--{$post_type}",
 		"type-{$post_type}",
-		"type-{$post_type}--teaser",
 	];
 
 	include plugin_dir_path( __FILE__ ) . 'templates/post-entry.php';

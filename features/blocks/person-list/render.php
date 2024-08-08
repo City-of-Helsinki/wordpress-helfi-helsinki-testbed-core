@@ -29,7 +29,7 @@ function create_html( array $attributes, WP_Query $query ): void {
 			$attributes['className'] ?? '',
 			'layout-' . $layout,
 		) );
-		$grid_class = $query->post_count > 1 ? 'grid' : '';
+		$grid_class = $query->post_count > 1 ? 'wp-block-person-list__entries' : 'wp-block-person-list__single';
 
 		include plugin_dir_path( __FILE__ ) . 'templates/people-grid.php';
 	} else {
@@ -48,8 +48,8 @@ function person_entry( WP_Post $post, string $layout ): void {
 
 	$entry_classes = [
 		'teaser',
+		"teaser--{$post_type}",
 		"type-{$post_type}",
-		"type-{$post_type}--teaser",
 		"layout-{$layout}",
 	];
 

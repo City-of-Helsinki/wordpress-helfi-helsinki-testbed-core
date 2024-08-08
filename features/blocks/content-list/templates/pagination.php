@@ -8,6 +8,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 ?>
-<div class="pagination">
+<div class="wp-block-content-list__pagination">
 	<?php echo paginate_links( $args ); ?>
 </div>

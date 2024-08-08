@@ -9,13 +9,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 ?>
 <div class="<?php echo esc_attr( implode( ' ', $entry_classes ) ); ?>">
-	<div class="person-teaser__image">
+	<figure class="person-teaser__image wp-block-image is-style-outline">
 		<?php
 			if ( $thumbnail ) {
-				printf(
-					'<figure class="wp-block-image is-style-outline">%s</figure>',
-					$thumbnail
-				);
+				echo $thumbnail;
 			} else {
 				printf(
 					'<img src="%s" alt="%s">',
@@ -24,11 +21,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 				);
 			}
 		?>
-	</div>
+	</figure>
 
 	<ul class="person-teaser__details">
 	    <li>
-			<h3><?php echo esc_html( $title ); ?></h3>
+			<h3 class="person-teaser__name"><?php echo esc_html( $title ); ?></h3>
 		</li>
 		<?php if ( $email ) : ?>
 			<li class="person-teaser__email">

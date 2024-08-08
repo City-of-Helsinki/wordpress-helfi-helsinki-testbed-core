@@ -1,5 +1,31 @@
 .wp-block-person-list {
-  [class^="cell"] {
-    margin-bottom: $spacing-layout-m;
+  .wp-block-person-list__entries {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: $spacing-layout-m $spacing-m;
+  }
+
+  &.layout-horizontal {
+    .wp-block-person-list__entries {
+      @include breakpoint('medium') {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+  }
+
+  &.layout-vertical {
+    .wp-block-person-list__entries {
+      @include breakpoint('medium') {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      @include breakpoint('large') {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      @include breakpoint('xlarge') {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
+    }
   }
 }

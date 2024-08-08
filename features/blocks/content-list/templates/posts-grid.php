@@ -11,11 +11,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 <div id="<?php echo esc_attr( $block_id ); ?>" class="<?php echo esc_attr( implode( ' ', $block_classes ) ); ?>">
 	<?php
 		if ( $title ) {
-			echo '<h2>' . esc_html( $title ) . '</h2>';
+			echo '<h2 class="wp-block-content-list__title">' . esc_html( $title ) . '</h2>';
 		}
 	?>
 
-	<div class="grid">
+	<div class="wp-block-content-list__entries">
 		<?php
 			while( $query->have_posts() ) {
 				$query->the_post();

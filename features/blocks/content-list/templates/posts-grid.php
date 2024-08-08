@@ -8,7 +8,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 ?>
-<div id="<?php echo esc_attr( $block_id ); ?>" class="content-list <?php echo esc_attr( $block_classes ); ?>">
+<div id="<?php echo esc_attr( $block_id ); ?>" class="<?php echo esc_attr( implode( ' ', $block_classes ) ); ?>">
 	<?php
 		if ( $title ) {
 			echo '<h2>' . esc_html( $title ) . '</h2>';

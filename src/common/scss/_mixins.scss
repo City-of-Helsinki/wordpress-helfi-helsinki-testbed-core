@@ -1,0 +1,29 @@
+@mixin breakpoint( $breakpoint ) {
+  $breakpoint: get-breakpoint($breakpoint);
+  @media screen and (min-width: #{ rem-calc( $breakpoint - 1 ) } ) {
+    @content;
+  }
+}
+
+@mixin breakpointMax( $breakpoint ) {
+  $breakpoint: get-breakpoint($breakpoint);
+  @media screen and (max-width: #{ rem-calc( $breakpoint - 1 ) } ) {
+    @content;
+  }
+}
+
+@mixin breakpointRange( $min, $max ) {
+  $min: get-breakpoint($min);
+  $max: get-breakpoint($max);
+  @media screen and (min-width: #{ rem-calc( $min ) } ) and (max-width: #{ rem-calc( $max - 2 ) } ) {
+    @content;
+  }
+}
+
+@mixin hoverFocusActive() {
+  &:hover,
+  &:focus,
+  &:active {
+    @content;
+  }
+}

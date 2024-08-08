@@ -1,0 +1,41 @@
+.wp-block-hds-icon-and-text {
+  text-align: center;
+
+  &.has-background {
+    padding: 20px;
+  }
+
+  &__icon {
+    margin-left: auto;
+    margin-right: auto;
+    width: 80px;
+    height: 80px;
+  }
+
+  &__heading,
+  &__body {
+    font-weight: bold;
+  }
+
+  &__heading {
+    font-size: 52px;
+    line-height: 1.19;
+  }
+
+  &__body {
+    font-size: 24px;
+    line-height: 1.21;
+  }
+
+  .wp-block-hds-icon-and-text__icon + .wp-block-hds-icon-and-text__heading {
+    margin-top: 26px;
+  }
+
+  .wp-block-hds-icon-and-text__icon + .wp-block-hds-icon-and-text__body {
+    margin-top: 30px;
+  }
+
+  .wp-block-hds-icon-and-text__heading + .wp-block-hds-icon-and-text__body {
+    margin-top: 16px;
+  }
+}

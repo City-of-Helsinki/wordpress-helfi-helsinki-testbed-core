@@ -1,0 +1,107 @@
+.wp-block-hds-highlight {
+  padding: 20px;
+
+  @include breakpoint('small') {
+    padding: 25px;
+  }
+
+  @include breakpoint('medium') {
+    padding: 30px;
+  }
+
+  @include breakpoint('large') {
+    padding: 40px;
+  }
+
+  @include breakpoint('xlarge') {
+    padding: 50px;
+  }
+
+  &__columns {
+    display: flex;
+
+    @include breakpoint('large') {
+      flex-wrap: nowrap;
+    }
+
+    @include breakpoint('large') {
+      flex-wrap: wrap;
+    }
+  }
+
+  &__column.icon-column {
+    flex-basis: 100%;
+    flex-grow: 1;
+    align-self: center;
+    margin-bottom: 20px;
+
+    @include breakpoint('large') {
+      display: flex;
+      flex-basis: 15%;
+      flex-grow: 0;
+      flex-shrink: 0;
+      justify-content: center;
+      margin-bottom: 0;
+    }
+  }
+
+  &__column.body-column {
+    flex-basis: 100%;
+    flex-grow: 1;
+    align-self: center;
+    margin-bottom: 20px;
+
+    @include breakpoint('large') {
+      flex-basis: auto;
+      flex-shrink: 1;
+      margin-bottom: 0;
+    }
+  }
+
+  &__column.button-column {
+    flex-basis: 100%;
+    flex-grow: 1;
+    align-self: center;
+    margin-bottom: 20px;
+
+    @include breakpoint('large') {
+      flex-basis: 25%;
+      flex-grow: 0;
+      flex-shrink: 0;
+      margin-bottom: 0;
+      white-space: nowrap;
+      text-align: right;
+    }
+  }
+
+  &__icon {
+    width: 56px;
+    height: 56px;
+    padding: 24px;
+
+    @include breakpoint('large') {
+      width: 112px;
+      height: 112px;
+      margin-right: 24px;
+    }
+  }
+
+  &__heading {
+    margin: 0;
+  }
+
+  .wp-block-hds-highlight__heading + .wp-block-hds-highlight__body {
+    margin-top: 20px;
+  }
+
+  &__button .wp-block-button__link {
+    font-size: 20px;
+    font-weight: bold;
+  }
+
+  &__link-url-input {
+    display: block;
+    width: 100%;
+    margin-bottom: 20px;
+  }
+}

@@ -1,0 +1,49 @@
+$breakpoints: (
+  extra-small: 320,
+  small: 576,
+  medium: 768,
+  large: 992,
+  xlarge: 1248,
+);
+
+$color-palette: (
+  'primary': var(--primary-color),
+  'secondary': var(--secondary-color),
+  'black': var(--color-black-90),
+  'white': var(--color-white),
+  'c-kes-kes-light-20':	var(--color-summer-light),
+  'c-kupari-kupari-light-20': var(--color-copper-light),
+  'c-sumu-sumu-light-20': var(--color-fog-light),
+  'c-suomenlinna-suomenlinna-light-20': var(--color-suomenlinna-light),
+  'c-engel-engel-light-20': var(--color-engel-light),
+  'light-grey': var(--color-black-10),
+  'dark-grey': var(--color-black-90),
+  'c-suomenlinna-suomenlinna': var(--color-suomenlinna),
+  'c-vaakuna-vaakuna': var(--color-coat-of-arms),
+  'c-kupari-kupari': var(--color-copper),
+  'c-kes-kes': var(--color-summer),
+  'c-black-20': var(--color-black-20),
+  'c-fog': var(--color-fog),
+  'c-coat-of-arms-gold': var(--color-gold),
+);
+
+$spacing-4-xs: var(--spacing-4-xs);
+$spacing-3-xs: var(--spacing-3-xs);
+$spacing-2-xs: var(--spacing-2-xs);
+$spacing-xs: var(--spacing-xs);
+$spacing-s: var(--spacing-s);
+$spacing-m: var(--spacing-m);
+$spacing-l: var(--spacing-l);
+$spacing-xl: var(--spacing-xl);
+$spacing-2-xl: var(--spacing-2-xl);
+$spacing-3-xl: var(--spacing-3-xl);
+$spacing-4-xl: var(--spacing-4-xl);
+$spacing-5-xl: var(--spacing-5-xl);
+
+$spacing-layout-2-xs: var(--spacing-layout-2-xs);
+$spacing-layout-xs: var(--spacing-layout-xs);
+$spacing-layout-s: var(--spacing-layout-s);
+$spacing-layout-m: var(--spacing-layout-m);
+$spacing-layout-l: var(--spacing-layout-l);
+$spacing-layout-xl: var(--spacing-layout-xl);
+$spacing-layout-2-xl: var(--spacing-layout-2-xl);

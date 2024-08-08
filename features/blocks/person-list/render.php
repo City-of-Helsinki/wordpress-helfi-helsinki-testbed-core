@@ -22,7 +22,7 @@ function render( $attributes, $content ) : string {
 
 function create_html( array $attributes, WP_Query $query ): void {
 	if ( $query->have_posts() ) {
-		$layout = Blocks\attribute_value( $attributes, 'layout', 'vertical', 'strval' );
+		$layout = Blocks\attribute_value( $attributes, 'layout', 'vertical' );
 
 		$block_classes = array_filter( array(
 			$attributes['className'] ?? '',

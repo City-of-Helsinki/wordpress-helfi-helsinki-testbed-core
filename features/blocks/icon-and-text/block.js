@@ -96,7 +96,7 @@
       bodyClassNames.concat( ' ', textColor.class );
     }
 
-    return createElement('div', {classNames: wrapClassNames},
+    return createElement('div', {className: wrapClassNames},
       createElement('svg', {
         className: `icon-and-text__icon icon mask-icon icon--${iconName} hds-icon--${iconName} inline-icon`,
         viewBox: '0 0 24 24',

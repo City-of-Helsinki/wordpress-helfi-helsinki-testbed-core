@@ -62,7 +62,7 @@
             options: ICONS.map(name => ({
               value: name,
               label: createElement('svg', {
-                className: `icon mask-icon icon--${name} hds-icon--${name} inline-icon`,
+                className: `icon mask-icon icon--${name} hds-icon hds-icon--${name} testbed-icon`,
                 viewBox: '0 0 24 24',
                 'aria-label': name,
                 style: {
@@ -98,7 +98,7 @@
 
     return createElement('div', {className: wrapClassNames},
       createElement('svg', {
-        className: `icon-and-text__icon icon mask-icon icon--${iconName} hds-icon--${iconName} inline-icon`,
+        className: `icon-and-text__icon icon mask-icon hds-icon icon--${iconName} hds-icon--${iconName} testbed-icon`,
         viewBox: '0 0 24 24',
         'aria-label': iconName,
         style: {

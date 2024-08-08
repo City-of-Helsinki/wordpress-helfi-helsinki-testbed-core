@@ -6,6 +6,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 return array(
 	'blocks' => array(
+		'assets',
 		'init',
 	),
 	'mandatory-excerpt' => array(

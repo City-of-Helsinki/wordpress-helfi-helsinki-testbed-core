@@ -8,7 +8,9 @@ return [
 	'content-list' => [
 		'render_callback' => 'ContentList\render',
 	],
-    // 'highlight' => [],
+    'highlight' => [
+		'render_callback' => 'Highlight\render',
+	],
     'icon-and-text' => [
 		'render_callback' => 'IconAndText\render',
 	],

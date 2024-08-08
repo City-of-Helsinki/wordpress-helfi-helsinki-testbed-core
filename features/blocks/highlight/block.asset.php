@@ -2,7 +2,8 @@
 return array(
     'dependencies' => array(
         'wp-blocks',
-		'wp-components',
+        'wp-data',
+        'wp-components',
 		'wp-editor',
         'wp-element',
         'wp-i18n',

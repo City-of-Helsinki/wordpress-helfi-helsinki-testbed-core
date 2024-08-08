@@ -7,23 +7,7 @@
     'tree',
   ];
 
-  const colorSamples = [
-  	{
-  		name: 'Coral',
-  		slug: 'coral',
-  		color: '#FF7F50'
-  	},
-  	{
-  		name: 'Lavender',
-  		slug: 'lavender',
-  		color: '#E6E6FA'
-  	},
-  	{
-  		name: 'White',
-  		slug: 'white',
-  		color: '#ffffff'
-  	}
-  ];
+  const colorPalette = [];
 
   const {registerBlockType} = wpBlockEditor.blocks;
   const {createElement, Fragment} = wpBlockEditor.element;
@@ -47,9 +31,7 @@
     iconColor,
     setIconColor,
     textColor,
-    setTextColor,
-    backgroundColor,
-    setBackgroundColor,
+    setTextColor
   }) {
     const {iconName} = attributes;
 
@@ -57,13 +39,8 @@
       createElement(PanelColorSettings, {
         title: __('Colors', 'helsinki-testbed-core'),
         __experimentalIsRenderedInSidebar: true,
-        colors: colorSamples,
+        colors: colorPalette,
         colorSettings: [
-          {
-            colorValue: backgroundColor.color,
-            onChange: setBackgroundColor,
-            label: __('Background color', 'helsinki-testbed-core'),
-          },
           {
             colorValue: iconColor.color,
             onChange: setIconColor,
@@ -106,19 +83,14 @@
     attributes,
     setAttributes,
     iconColor,
-    textColor,
-    backgroundColor,
+    textColor
   }) {
     const {iconName, heading, body} = attributes;
 
     var wrapClassNames = 'icon-and-text';
-    if (!!backgroundColor.class) {
-      wrapClassNames.concat( ' ', backgroundColor.class );
-      wrapClassNames.concat( ' ', 'has-background-color' );
-    }
-
     var headingClassNames = 'icon-and-text__heading';
     var bodyClassNames = 'icon-and-text__body';
+
     if (!!textColor.class) {
       headingClassNames.concat( ' ', textColor.class );
       bodyClassNames.concat( ' ', textColor.class );
@@ -160,8 +132,7 @@
 
   registerBlockType('hds/icon-and-text', {
     title: __( 'Icon & Text', 'helsinki-testbed-core' ),
-    edit: withColors('backgroundColor',
-      { textColor: 'color' },
+    edit: withColors({ textColor: 'color' },
       { iconColor: 'color' },
     )(BlockEditWithColors),
   });

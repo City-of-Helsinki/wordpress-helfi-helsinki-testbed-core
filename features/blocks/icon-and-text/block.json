@@ -35,10 +35,6 @@
     "textColor": {
       "type": "string",
       "default": ""
-    },
-    "backgroundColor": {
-      "type": "string",
-      "default": ""
     }
   },
   "editorScript": "file:block.js"

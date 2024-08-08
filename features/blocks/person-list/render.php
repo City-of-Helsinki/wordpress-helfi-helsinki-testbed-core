@@ -25,6 +25,7 @@ function create_html( array $attributes, WP_Query $query ): void {
 		$layout = Blocks\attribute_value( $attributes, 'layout', 'vertical' );
 
 		$block_classes = array_filter( array(
+			'wp-block-person-list',
 			$attributes['className'] ?? '',
 			'layout-' . $layout,
 		) );

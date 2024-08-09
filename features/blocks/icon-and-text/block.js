@@ -87,27 +87,25 @@
   }) {
     const {iconName, heading, body} = attributes;
 
-    var wrapClassNames = 'icon-and-text';
-    var headingClassNames = 'icon-and-text__heading';
-    var bodyClassNames = 'icon-and-text__body';
+    var headingClassNames = 'wp-block-hds-icon-and-text__heading';
+    var bodyClassNames = 'wp-block-hds-icon-and-text__body';
+    var iconClassNames = `wp-block-hds-icon-and-text__icon has-${iconName}-icon`;
 
     if (!!textColor.class) {
       headingClassNames.concat( ' ', textColor.class );
       bodyClassNames.concat( ' ', textColor.class );
+      iconClassNames.concat( ' ', textColor.class );
     }
 
-    return createElement('div', {className: wrapClassNames},
-      createElement('svg', {
-        className: `icon-and-text__icon icon mask-icon hds-icon icon--${iconName} hds-icon--${iconName} testbed-icon`,
-        viewBox: '0 0 24 24',
-        'aria-label': iconName,
-        style: {
-          width: '30px',
-          height: '30px',
-          backgroundColor: iconColor.color || '#000',
-          fill: iconColor.color || '#000',
-        },
-      }),
+    return createElement(Fragment, {},
+      createElement('div', {className: iconClassNames},
+        createElement('svg', {
+          className: `icon mask-icon hds-icon icon--${iconName} hds-icon--${iconName} testbed-icon`,
+          viewBox: '0 0 24 24',
+          'aria-hidden': true,
+          'tabindex': -1,
+        })
+      ),
       createElement(RichText, {
         placeholder: __('Enter heading', 'helsinki-testbed-core'),
         tagName: 'div',

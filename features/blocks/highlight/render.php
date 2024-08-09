@@ -16,6 +16,11 @@ function render( $attributes, $content ) : string {
 		$attributes['className'] ?? '',
 	) );
 
+	$backgroundColor = Blocks\attribute_value( $attributes, 'backgroundColor', '' );
+	if ( $backgroundColor ) {
+		$classes[] = "has-{$backgroundColor}-background-color has-background";
+	}
+
 	return sprintf(
 		'<div class="%s">%s</div>',
 		esc_attr( implode( ' ', $classes ) ),

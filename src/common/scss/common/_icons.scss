@@ -2,6 +2,10 @@
 
 $icons: 'book', 'calendar-clock', 'car', 'car-wifi', 'drone', 'ed-tech', 'home-solar-panels', 'kiertotalous', 'ship', 'tree';
 
+.testbed-icon {
+  mask-size: contain;
+}
+
 @each $icon in $icons {
   .hds-icon--#{$icon} {
     @include inline-svg($icon);

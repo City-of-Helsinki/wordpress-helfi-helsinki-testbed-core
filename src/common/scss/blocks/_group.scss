@@ -1,0 +1,48 @@
+.wp-block-group {
+  &.alignfull .wp-block-group__inner-container {
+    max-width: $global-width;
+    margin-left: auto;
+    margin-right: auto;
+
+    // Nested alignfull should break out of inner container
+    .alignfull {
+      width: 100vw;
+      max-width: none;
+      margin-left: calc((100vw - $global-width) / 2 * -1);
+    }
+  }
+
+  &.alignwide,
+  &.alignfull {
+    // non-aligned content within alignwide and alignfull should have alignwide width
+    .wp-block-group__inner-container > *:not(.alignwide):not(.alignfull):not(.alignleft):not(.alignright):not(.has-text-align-center) {
+      max-width: $global-width;
+      margin-left: auto;
+      margin-right: auto;
+
+      // align content to the left on large screens
+      @include breakpoint('large') {
+        margin-left: 0;
+      }
+    }
+  }
+
+  // Blocks with backgrounds have a padding.
+  &.has-background {
+    padding: $spacing-2-xl $spacing-s;
+
+    @each $name, $padding in $block-paddings {
+      @include breakpoint($name) {
+        padding: $padding $padding;
+
+        // Let alignfull stretch to the edge.
+        [data-align="full"],
+        .alignfull {
+          margin-left: -$padding;
+          margin-right: -$padding;
+          max-width: calc(100% + #{$padding * 2});
+        }
+      }
+    }
+  }
+}

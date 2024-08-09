@@ -47,3 +47,15 @@ $spacing-layout-m: var(--spacing-layout-m);
 $spacing-layout-l: var(--spacing-layout-l);
 $spacing-layout-xl: var(--spacing-layout-xl);
 $spacing-layout-2-xl: var(--spacing-layout-2-xl);
+
+$global-width: 1200px;
+
+$block-paddings: (
+  small: 3rem,
+  medium: 4.5rem,
+);
+
+$block-margins: (
+  small: 3rem,
+  medium: 4.5rem,
+);

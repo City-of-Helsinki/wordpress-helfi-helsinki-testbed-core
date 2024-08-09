@@ -5,8 +5,5 @@
 @import '../../common/scss/variables';
 
 .editor-styles-wrapper {
-  @import '../../common/scss/blocks/content-list';
-  @import '../../common/scss/blocks/hds-highlight';
-  @import '../../common/scss/blocks/hds-icon-text';
-  @import '../../common/scss/blocks/person-list';
+  @import '../../common/scss/blocks/index';
 }

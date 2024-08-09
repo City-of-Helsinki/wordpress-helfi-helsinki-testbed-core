@@ -14,4 +14,6 @@ function init(): void {
 	add_action( 'save_post_post', __NAMESPACE__ . '\\save_custom_post_meta', 10, 3 );
 
 	add_filter( 'helsinki_testbed_core_quiet_post_meta_key', __NAMESPACE__ . '\\quiet_post_meta_key' );
+
+	add_filter( 'display_post_states', __NAMESPACE__ . '\\quiet_post_state', 10, 2 );
 }

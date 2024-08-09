@@ -25,6 +25,7 @@ return array(
 	),
 	'quiet-posts' => array(
 		'post-meta',
+		'post-state',
 		'save-post',
 		'init',
 	),

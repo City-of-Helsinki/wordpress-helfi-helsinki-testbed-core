@@ -86,7 +86,7 @@ function use_pagination( array $attributes ): bool {
 function pagination( WP_Query $query, string $fragment = '' ): void {
 	if ( $query->max_num_pages > 1 ) {
 		$args = [
-			'base' => str_replace(999999, '%#%', esc_url(get_pagenum_link(999999))),
+			'base' => str_replace('999999', '%#%', esc_url(get_pagenum_link(999999))),
 			'format' => '?paged=%#%',
 			'current' => max(1, get_query_var('paged')),
 			'total' => $query->max_num_pages,

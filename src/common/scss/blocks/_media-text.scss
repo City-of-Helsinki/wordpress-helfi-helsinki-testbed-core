@@ -76,6 +76,7 @@ $content-overlap-amount-mobile: 32;
       right: 0;
       width: calc(100% + #{$content-overlap-amount-desktop * 1px});
       padding: 82px 50px;
+      z-index: 1;
     }
 
     &.has-media-on-the-right .wp-block-media-text__content {
@@ -133,6 +134,7 @@ $content-overlap-amount-mobile: 32;
       margin: 58px 96px 90px 0;
       padding: 40px 49px 40px 27px;
       width: calc(100% + 96px);
+      z-index: 1;
     }
 
     &.has-media-on-the-right .wp-block-media-text__content {

@@ -19,6 +19,8 @@ function init() : void {
 	add_action( 'enqueue_block_editor_assets', __NAMESPACE__ . '\\editor_assets' );
 
 	add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\\public_assets', 11 );
+
+	add_filter( 'wp_theme_json_data_theme', __NAMESPACE__ . '\\editor_color_palette', 11 );
 }
 
 /**

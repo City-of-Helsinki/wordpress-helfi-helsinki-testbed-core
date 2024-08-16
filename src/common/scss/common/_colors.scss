@@ -4,8 +4,8 @@
   }
 }
 
-// @each $color-name, $color-value in $color-palette {
-//   .has-#{$color-name}-color {
-//     color: $color-value !important;
-//   }
-// }
+@each $color-name, $color-value in $color-palette {
+  .has-#{$color-name}-color {
+    color: $color-value !important;
+  }
+}

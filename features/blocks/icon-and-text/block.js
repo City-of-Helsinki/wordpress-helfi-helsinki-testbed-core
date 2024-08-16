@@ -7,8 +7,6 @@
     'tree',
   ];
 
-  const colorPalette = [];
-
   const {registerBlockType} = wpBlockEditor.blocks;
   const {createElement, Fragment} = wpBlockEditor.element;
   const { __ } = wpBlockEditor.i18n;
@@ -39,7 +37,6 @@
       createElement(PanelColorSettings, {
         title: __('Colors', 'helsinki-testbed-core'),
         __experimentalIsRenderedInSidebar: true,
-        colors: colorPalette,
         colorSettings: [
           {
             colorValue: iconColor.color,
@@ -68,8 +65,8 @@
                 style: {
                   width: '30px',
                   height: '30px',
-                  backgroundColor: iconColor.color || '#000',
-                  fill: iconColor.color || '#000',
+                  backgroundColor: '#000',
+                  fill: '#000',
                   maskSize: 'contain',
                 },
               }),
@@ -88,23 +85,34 @@
   }) {
     const {iconName, heading, body} = attributes;
 
+    console.log(iconColor, textColor);
+
     var headingClassNames = 'wp-block-hds-icon-and-text__heading';
     var bodyClassNames = 'wp-block-hds-icon-and-text__body';
-    var iconClassNames = `wp-block-hds-icon-and-text__icon has-${iconName}-icon`;
+    var iconWrapClassNames = `wp-block-hds-icon-and-text__icon has-${iconName}-icon`;
+    var iconClassNames = `icon mask-icon hds-icon icon--${iconName} hds-icon--${iconName} testbed-icon`;
 
-    if (!!textColor.class) {
-      headingClassNames.concat( ' ', textColor.class );
-      bodyClassNames.concat( ' ', textColor.class );
-      iconClassNames.concat( ' ', textColor.class );
+    if (textColor.class) {
+      headingClassNames = headingClassNames.concat( ' ', textColor.class );
+      bodyClassNames = bodyClassNames.concat( ' ', textColor.class );
+      iconWrapClassNames = iconWrapClassNames.concat( ' ', textColor.class );
+    }
+
+    if (iconColor.class) {
+      iconClassNames = iconClassNames.concat( ' ', iconColor.class );
     }
 
     return createElement(Fragment, {},
-      createElement('div', {className: iconClassNames},
+      createElement('div', {className: iconWrapClassNames},
         createElement('svg', {
-          className: `icon mask-icon hds-icon icon--${iconName} hds-icon--${iconName} testbed-icon`,
+          className: iconClassNames,
           viewBox: '0 0 24 24',
           'aria-hidden': true,
           'tabindex': -1,
+          style: {
+            backgroundColor: iconColor.color || '#000',
+            fill: iconColor.color || '#000',
+          },
         })
       ),
       createElement(RichText, {

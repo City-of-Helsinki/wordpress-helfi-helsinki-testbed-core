@@ -17,10 +17,10 @@ function init() : void {
 	add_action( 'block_categories_all', __NAMESPACE__ . '\\register_categories', 10, 2 );
 
 	add_action( 'enqueue_block_editor_assets', __NAMESPACE__ . '\\editor_assets' );
-
 	add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\\public_assets', 11 );
-
 	add_filter( 'wp_theme_json_data_theme', __NAMESPACE__ . '\\editor_color_palette', 11 );
+
+	add_filter( 'load_script_translation_file', __NAMESPACE__ . '\\translations_location', 10, 3 );
 }
 
 /**
@@ -33,6 +33,18 @@ function blocks() : array {
 
 function categories() : array {
 	return apply_filters( 'helsinki_testbed_core_load_config', 'block-categories' );
+}
+
+function translations_location( string $file, string $handle, string $domain ) : string {
+	if ( 'helsinki-testbed-core' !== $domain || ! $file ) {
+		return $file;
+	}
+
+	$path = apply_filters( 'helsinki_testbed_core_plugin_path', '' );
+
+	return ( strpos( $handle, 'helsinki-testbed-core' ) !== false )
+		? str_replace( WP_LANG_DIR . '/plugins', $path . 'languages', $file )
+		: $file;
 }
 
 /**

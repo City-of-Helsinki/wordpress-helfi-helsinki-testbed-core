@@ -70,6 +70,7 @@
                   height: '30px',
                   backgroundColor: iconColor.color || '#000',
                   fill: iconColor.color || '#000',
+                  maskSize: 'contain',
                 },
               }),
             }))

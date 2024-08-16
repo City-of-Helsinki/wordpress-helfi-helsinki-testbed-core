@@ -1,5 +1,5 @@
 .teaser {
-  &__link {
+  .teaser__link {
     color: inherit;
     display: block;
     text-decoration: none;
@@ -11,7 +11,7 @@
     }
   }
 
-  &__thumbnail {
+  .teaser__thumbnail {
     position: relative;
     width: 100%;
     height: 0;
@@ -30,44 +30,43 @@
     }
   }
 
-  &__thumbnail + .teaser__content {
+  .teaser__thumbnail + .teaser__content {
     margin-top: $spacing-layout-xs;
   }
 
-  &__title {
+  .teaser__title {
     font-size: 1.5rem;
     line-height: 1.2;
     margin: 0;
   }
 
-  &__excerpt {
+  .teaser__excerpt {
     font-size: 1.125rem;
     line-height: 1.5;
     margin: 0;
   }
 
-  &__title + .teaser__excerpt {
+  .teaser__title + .teaser__excerpt {
     margin-top: $spacing-layout-2-xs;
   }
 
-  &__tags {
+  .teaser__tags {
     list-style: none;
-    padding-left: 0;
-    margin-bottom: 0;
-    margin-left: 0;
+    padding: 0;
+    margin: $spacing-2-xs 0 0 0;
 
-    li {
+    .teaser__tag {
       display: inline-block;
       margin-right: $spacing-layout-2-xs;
       text-decoration: underline;
 
-      a {
+      .teaser__tag-link {
         color: inherit;
       }
     }
   }
 
-  &__content + .teaser__tags {
+  .teaser__content + .teaser__tags {
     margin-top: $spacing-2-xs;
   }
 }

@@ -6,7 +6,7 @@
     padding: 20px;
   }
 
-  &__icon {
+  .wp-block-hds-icon-and-text__icon {
     margin-left: auto;
     margin-right: auto;
     width: 80px;
@@ -19,17 +19,17 @@
     }
   }
 
-  &__heading,
-  &__body {
+  .wp-block-hds-icon-and-text__heading,
+  .wp-block-hds-icon-and-text__body {
     font-weight: bold;
   }
 
-  &__heading {
-    font-size: 52px;
+  .wp-block-hds-icon-and-text__heading {
+    font-size: 36px;
     line-height: 1.19;
   }
 
-  &__body {
+  .wp-block-hds-icon-and-text__body {
     font-size: 24px;
     line-height: 1.21;
   }

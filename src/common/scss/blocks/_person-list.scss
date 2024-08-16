@@ -35,3 +35,27 @@
     }
   }
 }
+
+body.has-sidebar {
+  .wp-block-person-list {
+    &.layout-horizontal {
+      .wp-block-person-list__entries {
+        @include breakpoint('medium') {
+          grid-template-columns: 1fr;
+        }
+      }
+    }
+
+    &.layout-vertical {
+      .wp-block-person-list__entries {
+        @include breakpoint('large') {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        @include breakpoint('xlarge') {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+    }
+  }
+}

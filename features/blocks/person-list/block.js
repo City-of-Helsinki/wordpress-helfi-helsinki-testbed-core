@@ -84,7 +84,7 @@
         createElement('div', {className: 'person-selector'},
           createElement(SelectControl, {
             className: 'person-selector__dropdown',
-            label: __('Team member', 'helsinki-testbed-core'),
+            label: __('Person', 'helsinki-testbed-core'),
             options: personOptions,
             value: selectedPerson,
             onChange: personPostId => selectPerson(personPostId),

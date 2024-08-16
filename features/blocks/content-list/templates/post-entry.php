@@ -56,8 +56,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 	<?php if ( $tags || $categories ) : ?>
 		<ul class="teaser__tags">
 			<?php foreach( $categories as $category ) : ?>
-				<li>
-					<a href="<?php echo esc_url( get_category_link($category) ); ?>">
+				<li class="teaser__tag">
+					<a class="teaser__tag-link" href="<?php echo esc_url( get_category_link($category) ); ?>">
 						<?php echo esc_html( $category->name ); ?>
 					</a>
 				</li>
@@ -65,8 +65,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 			<?php if ( $tags ) : ?>
 				<?php foreach( $tags as $tag ) : ?>
-					<li>
-						<a href="<?php echo esc_url( get_tag_link($tag) ); ?>">
+					<li class="teaser__tag">
+						<a class="teaser__tag-link" href="<?php echo esc_url( get_tag_link($tag) ); ?>">
 							<?php echo esc_html( $tag->name ); ?>
 						</a>
 					</li>

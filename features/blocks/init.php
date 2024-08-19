@@ -40,9 +40,19 @@ function translations_location( string $file, string $handle, string $domain ) :
 		return $file;
 	}
 
+	$blocks = array(
+		'acf-content-list-editor-script' => '',
+		'hds-highlight-editor-script' => '',
+		'hds-icon-and-text-editor-script' => '',
+		'acf-person-list-editor-script' => '',
+	);
+
+	$replace_path = isset( $blocks[$handle] )
+		|| ( strpos( $handle, 'helsinki-testbed-core' ) !== false );
+
 	$path = apply_filters( 'helsinki_testbed_core_plugin_path', '' );
 
-	return ( strpos( $handle, 'helsinki-testbed-core' ) !== false )
+	return $replace_path
 		? str_replace( WP_LANG_DIR . '/plugins', $path . 'languages', $file )
 		: $file;
 }

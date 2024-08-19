@@ -91,11 +91,10 @@ function common_assets(): void {
 	$path = apply_filters( 'helsinki_testbed_core_plugin_path', '' );
 	$assets = apply_filters( 'helsinki_testbed_core_assets_url', '' );
 	$version = apply_filters( 'helsinki_testbed_core_asset_version', false );
-	$is_debug = apply_filters( 'helsinki_testbed_core_is_debug', false );
 
 	wp_enqueue_style(
         $handle . '-common',
-        $is_debug ? $assets . 'common/css/styles.css' : $assets . 'common/css/styles.min.css',
+        $assets . 'common/css/styles.css',
         array(),
         $version
     );

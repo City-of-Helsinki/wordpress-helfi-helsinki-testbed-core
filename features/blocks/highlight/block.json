@@ -1,0 +1,52 @@
+{
+  "apiVersion": 2,
+  "icon": "cover-image",
+  "name": "hds/highlight",
+  "description": "Display a highlight",
+  "textdomain": "helsinki-testbed-core",
+  "category": "helsinki-testbed-core",
+  "supports": {
+    "align": ["wide", "full"],
+    "alignWide": false,
+    "customClassName": true,
+    "html": false,
+    "inserter": true,
+    "multiple": true,
+    "reusable": false
+  },
+  "attributes": {
+    "iconName": {
+      "type": "string",
+      "default": ""
+    },
+    "heading": {
+      "type": "string",
+      "default": ""
+    },
+    "body": {
+      "type": "string",
+      "default": ""
+    },
+    "iconColor": {
+      "type": "string",
+      "default": ""
+    },
+    "textColor": {
+      "type": "string",
+      "default": ""
+    },
+    "backgroundColor": {
+      "type": "string",
+      "default": ""
+    },
+    "linkText": {
+      "type": "string",
+      "default": ""
+    },
+    "linkUrl": {
+      "type": "string",
+      "default": ""
+    }
+  },
+  "editorScript": "file:block.js"
+}

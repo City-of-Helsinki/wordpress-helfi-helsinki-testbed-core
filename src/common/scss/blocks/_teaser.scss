@@ -1,0 +1,72 @@
+.teaser {
+  .teaser__link {
+    color: inherit;
+    display: block;
+    text-decoration: none;
+
+    &:hover,
+    &:active,
+    &:focus {
+      color: inherit;
+    }
+  }
+
+  .teaser__thumbnail {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: math.div(310, 382) * 100%;
+
+    img {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    &--placeholder {
+      // @todo Placeholder styles need to be defined and implemented.
+      background-color: var(--color-black-10);
+    }
+  }
+
+  .teaser__thumbnail + .teaser__content {
+    margin-top: $spacing-layout-xs;
+  }
+
+  .teaser__title {
+    font-size: 1.5rem;
+    line-height: 1.2;
+    margin: 0;
+  }
+
+  .teaser__excerpt {
+    font-size: 1.125rem;
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  .teaser__title + .teaser__excerpt {
+    margin-top: $spacing-layout-2-xs;
+  }
+
+  .teaser__tags {
+    list-style: none;
+    padding: 0;
+    margin: $spacing-2-xs 0 0 0;
+
+    .teaser__tag {
+      display: inline-block;
+      margin-right: $spacing-layout-2-xs;
+      text-decoration: underline;
+
+      .teaser__tag-link {
+        color: inherit;
+      }
+    }
+  }
+
+  .teaser__content + .teaser__tags {
+    margin-top: $spacing-2-xs;
+  }
+}

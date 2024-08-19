@@ -1,0 +1,19 @@
+@import 'svg';
+
+$icons: 'book', 'calendar-clock', 'car', 'car-wifi', 'drone', 'ed-tech', 'home-solar-panels', 'kiertotalous', 'ship', 'tree';
+
+.testbed-icon {
+  mask-size: contain;
+}
+
+@each $icon in $icons {
+  .hds-icon--#{$icon} {
+    @include inline-svg($icon);
+  }
+}
+
+@each $color-name, $color-value in $color-palette {
+  .has-#{$color-name}-color .testbed-icon {
+    background-color: #{$color-value};
+  }
+}

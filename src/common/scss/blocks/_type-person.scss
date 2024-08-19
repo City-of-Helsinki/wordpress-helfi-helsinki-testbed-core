@@ -1,0 +1,90 @@
+.wp-block-person-list {
+  &.layout-horizontal .person-teaser {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+.teaser--person {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 280px;
+
+  @include breakpoint('medium') {
+    width: 100%;
+    max-width: unset;
+  }
+
+  .person-teaser__image {
+    figure {
+      position: relative;
+      margin: 0;
+      padding-bottom: calc(min(100%, 280px));
+      width: 280px;
+      max-width: 100%;
+      height: 0;
+
+      @include breakpoint('medium') {
+        width: 100%;
+        padding-bottom: 100%;
+      }
+
+      img {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: 50% 50%;
+      }
+    }
+  }
+
+  .person-teaser__name {
+    margin-bottom: 0;
+  }
+
+  .person-teaser__details {
+    list-style: none;
+    padding-left: 0;
+    margin-left: 0;
+    margin-top: 0;
+
+    li + li {
+      margin-top: $spacing-s;
+    }
+  }
+
+  .person-teaser__email {
+    a {
+      font-size: 1.25rem;
+      color: inherit;
+      text-decoration: none;
+      font-weight: bold;
+    }
+  }
+
+  .person-teaser__description {
+    font-size: 1rem;
+  }
+
+  &.layout-vertical {
+    .person-teaser__image + .person-teaser__details {
+      margin-top: $spacing-m;
+    }
+  }
+
+  &.layout-horizontal {
+    @include breakpointMax('xlarge') {
+      .person-teaser__image + .person-teaser__details {
+        margin-top: $spacing-m;
+      }
+    }
+
+    @include breakpoint('xlarge') {
+      align-items: center;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: $spacing-m;
+    }
+  }
+}

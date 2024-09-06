@@ -16,26 +16,24 @@
   }
 
   .person-teaser__image {
-    figure {
-      position: relative;
-      margin: 0;
-      padding-bottom: calc(min(100%, 280px));
-      width: 280px;
-      max-width: 100%;
-      height: 0;
+    position: relative;
+    margin: 0;
+    padding-bottom: calc(min(100%, 280px));
+    width: 280px;
+    max-width: 100%;
+    height: 0;
 
-      @include breakpoint('medium') {
-        width: 100%;
-        padding-bottom: 100%;
-      }
+    @include breakpoint('medium') {
+      width: 100%;
+      padding-bottom: 100%;
+    }
 
-      img {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        object-position: 50% 50%;
-      }
+    img {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: 50% 50%;
     }
   }
 

@@ -77,6 +77,7 @@ function persons_query( array $attributes  ): ?WP_Query {
 		'post_status' => 'publish',
 		'posts_per_page' => count( $ids ),
 		'post__in' => $ids,
+		'orderby' => 'post__in',
 	) );
 }
 

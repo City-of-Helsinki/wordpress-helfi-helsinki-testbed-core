@@ -30,13 +30,13 @@ function posts_table_columns_content( string $column, int $post_id ): void {
 function posts_table_columns_style(): void {
 	echo sprintf(
 		'<style>
-            .wp-list-table th.column-%1$s { width: 28px; }
-            .wp-list-table td.column-$1%s img {
-                max-width: 37px;
-                max-height: 37px;
-                width: auto;
-                height: auto;
-            }
+			.wp-list-table th.column-%1$s { width: 64px; }
+			.wp-list-table td.column-%1$s img {
+				max-width: 64px;
+				max-height: 64px;
+				width: auto;
+				height: auto;
+			}
         </style>',
 		thumbnail_column_key()
 	);

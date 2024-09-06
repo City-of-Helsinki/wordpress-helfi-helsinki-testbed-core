@@ -44,6 +44,8 @@
       const {attributes, setAttributes} = props;
       const {persons} = attributes;
 
+      console.log(persons);
+
       const addPerson = (id) => setAttributes({persons: [...persons, id]});
 
       const removePerson = (id) => setAttributes({

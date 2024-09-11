@@ -22,5 +22,9 @@ function filter_disallowed_blocks( array $disallowed ): array {
 		unset( $disallowed['post_types']['post']['core/group'] );
 	}
 
+	if ( isset( $disallowed['post_types']['post']['hds-wp/banner'] ) ) {
+		unset( $disallowed['post_types']['post']['hds-wp/banner'] );
+	}
+
 	return $disallowed;
 }

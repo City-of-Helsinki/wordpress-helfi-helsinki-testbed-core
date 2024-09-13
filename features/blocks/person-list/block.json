@@ -7,7 +7,7 @@
   "textdomain": "helsinki-testbed-core",
   "category": "helsinki-testbed-core",
   "supports": {
-    "align": [ "left", "right", "full" ]
+    "align": [ "left", "right", "center" ]
   },
   "attributes": {
     "data": {

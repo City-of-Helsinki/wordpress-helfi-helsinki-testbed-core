@@ -22,19 +22,38 @@ function render( $attributes, $content ) : string {
 
 function create_html( array $attributes, WP_Query $query ): void {
 	if ( $query->have_posts() ) {
-		$layout = Blocks\attribute_value( $attributes, 'layout', 'vertical' );
+		$layout = person_list_layout( $attributes );
+		$align = person_list_align(
+			$attributes,
+			person_list_default_align( $query->post_count, $layout )
+		);
 
 		$block_classes = array_filter( array(
 			'wp-block-person-list',
 			$attributes['className'] ?? '',
 			'layout-' . $layout,
+			'align-' . $align,
 		) );
-		$grid_class = $query->post_count > 1 ? 'wp-block-person-list__entries' : 'wp-block-person-list__single';
+		$grid_class = 'wp-block-person-list__entries';
 
 		include plugin_dir_path( __FILE__ ) . 'templates/people-grid.php';
 	} else {
 		not_found();
 	}
+}
+
+function person_list_align( array $attributes, string $default = 'left' ): string {
+	$align = Blocks\attribute_value( $attributes, 'align', $default );
+
+	return in_array( $align, array( 'left', 'right', 'center' ) ) ? $align : $default;
+}
+
+function person_list_default_align( int $post_count, string $layout ): string {
+	return (1 === $post_count && 'horizontal' === $layout) ? 'center' : 'left';
+}
+
+function person_list_layout( array $attributes ): string {
+	return Blocks\attribute_value( $attributes, 'layout', 'vertical' );
 }
 
 function person_entry( WP_Post $post, string $layout ): void {

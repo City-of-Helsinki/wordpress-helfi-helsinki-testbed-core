@@ -163,31 +163,31 @@
 function mapLegacyContentListAcfData(block, blockType, innerHTML) {
   if (blockType.name == 'acf/content-list') {
 
-    if ( block.data.title ) {
+    if ( ! block.title && block.data.title ) {
       block.title = block.data.title;
     }
 
-    if ( block.data.order_by ) {
+    if ( ! block.order_by && block.data.order_by ) {
       block.order_by = block.data.order_by.toLowerCase();
     }
 
-    if ( block.data.order ) {
+    if ( ! block.order && block.data.order ) {
       block.order = block.data.order;
     }
 
-    if ( block.data.category ) {
+    if ( ! block.category && block.data.category ) {
       block.category = parseInt(block.data.category, 10);
     }
 
-    if ( block.data.posts_per_page ) {
+    if ( ! block.posts_per_page && block.data.posts_per_page ) {
       block.posts_per_page = parseInt(block.data.posts_per_page, 10);
     }
 
-    if ( block.data.use_pagination ) {
+    if ( ! block.use_pagination && block.data.use_pagination ) {
       block.use_pagination = block.data.use_pagination == 1;
     }
 
-    if ( block.data.exclude_quiet_posts ) {
+    if ( ! block.exclude_quiet_posts && block.data.exclude_quiet_posts ) {
       block.exclude_quiet_posts = block.data.exclude_quiet_posts == 1;
     }
   }

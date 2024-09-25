@@ -107,12 +107,12 @@ function editor_assets() : void {
 	$version = apply_filters( 'helsinki_testbed_core_asset_version', false );
 	$is_debug = apply_filters( 'helsinki_testbed_core_is_debug', false );
 
-	// wp_enqueue_script(
-    //     $handle . '-editor',
-	// 	$assets . 'blocks/editor.js',
-    //     array( 'wp-blocks', 'wp-dom' ),
-    //     $version
-    // );
+	wp_enqueue_script(
+        $handle . '-admin',
+		$is_debug ? $assets . 'admin/js/scripts.js' : $assets . 'admin/js/scripts.min.js',
+        array( 'wp-blocks', 'wp-dom' ),
+        $version
+    );
 
 	common_assets();
 

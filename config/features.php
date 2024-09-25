@@ -35,7 +35,10 @@ return array(
 		'save-term',
 		'term-list-columns',
 		'redirection',
-		'init'
+		'init',
+	),
+	'related-posts' => array(
+		'query',
 	),
 	'misc',
 );

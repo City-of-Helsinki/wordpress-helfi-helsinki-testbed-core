@@ -7,6 +7,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 return array(
 	'blocks' => array(
 		'assets',
+		'helsinki-block-supports',
 		'init',
 	),
 	'mandatory-excerpt' => array(

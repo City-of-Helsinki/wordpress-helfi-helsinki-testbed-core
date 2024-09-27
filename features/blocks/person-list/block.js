@@ -44,8 +44,6 @@
       const {attributes, setAttributes} = props;
       const {persons} = attributes;
 
-      console.log(persons);
-
       const addPerson = (id) => setAttributes({persons: [...persons, id]});
 
       const removePerson = (id) => setAttributes({
@@ -210,11 +208,11 @@
 function mapLegacyPersonListAcfData(block, blockType, innerHTML) {
   if (blockType.name == 'acf/person-list') {
 
-    if ( block.data.layout ) {
+    if ( ! block.layout && block.data.layout ) {
       block.layout = block.data.layout;
     }
 
-    if ( block.data.persons ) {
+    if ( block.persons.length === 0 && block.data.persons ) {
       block.persons = block.data.persons.map(id => parseInt(id, 10));
     }
   }

@@ -1,37 +1,57 @@
 .wp-block-person-list {
   .wp-block-person-list__entries {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: $spacing-layout-m $spacing-m;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .teaser--person {
+    flex: 0 0 100%;
+    margin-bottom: $spacing-layout-m;
   }
 
   &.layout-horizontal {
     .wp-block-person-list__entries {
-      @include breakpoint('medium') {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+      .teaser--person {
+        @include breakpoint('medium') {
+          flex-basis: 50%;
+        }
       }
-    }
-
-    .wp-block-person-list__single {
-      margin-left: auto;
-      margin-right: auto;
-      max-width: 598px;
     }
   }
 
   &.layout-vertical {
     .wp-block-person-list__entries {
-      @include breakpoint('medium') {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
+      .teaser--person {
+        @include breakpoint('medium') {
+          flex-basis: 50%;
+        }
 
-      @include breakpoint('large') {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-      }
+        @include breakpoint('large') {
+          flex-basis: 33%
+        }
 
-      @include breakpoint('xlarge') {
-        grid-template-columns: repeat(4, minmax(0, 1fr));
+        @include breakpoint('xlarge') {
+          flex-basis: 25%
+        }
       }
+    }
+  }
+
+  &.align-left {
+    .wp-block-person-list__entries {
+      justify-content: left;
+    }
+  }
+
+  &.align-center {
+    .wp-block-person-list__entries {
+      justify-content: center;
+    }
+  }
+
+  &.align-right {
+    .wp-block-person-list__entries {
+      justify-content: right;
     }
   }
 }
@@ -40,20 +60,30 @@ body.has-sidebar {
   .wp-block-person-list {
     &.layout-horizontal {
       .wp-block-person-list__entries {
-        @include breakpoint('medium') {
-          grid-template-columns: 1fr;
+        .teaser--person {
+          @include breakpoint('large') {
+            flex-basis: 100%;
+          }
         }
+      }
+
+      &.align-left,
+      &.align-center,
+      &.align-right {
+        justify-content: left;
       }
     }
 
     &.layout-vertical {
       .wp-block-person-list__entries {
-        @include breakpoint('large') {
-          grid-template-columns: repeat(2, minmax(0, 1fr));
-        }
+        .teaser--person {
+          @include breakpoint('large') {
+            flex-basis: 50%;
+          }
 
-        @include breakpoint('xlarge') {
-          grid-template-columns: repeat(2, minmax(0, 1fr));
+          @include breakpoint('xlarge') {
+            flex-basis: 50%;
+          }
         }
       }
     }

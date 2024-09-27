@@ -85,8 +85,6 @@
   }) {
     const {iconName, heading, body} = attributes;
 
-    console.log(iconColor, textColor);
-
     var headingClassNames = 'wp-block-hds-icon-and-text__heading';
     var bodyClassNames = 'wp-block-hds-icon-and-text__body';
     var iconWrapClassNames = `wp-block-hds-icon-and-text__icon has-${iconName}-icon`;

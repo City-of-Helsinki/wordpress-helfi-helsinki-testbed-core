@@ -7,6 +7,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 return array(
 	'blocks' => array(
 		'assets',
+		'helsinki-block-supports',
 		'init',
 	),
 	'mandatory-excerpt' => array(
@@ -34,7 +35,10 @@ return array(
 		'save-term',
 		'term-list-columns',
 		'redirection',
-		'init'
+		'init',
+	),
+	'related-posts' => array(
+		'query',
 	),
 	'misc',
 );

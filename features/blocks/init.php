@@ -21,6 +21,9 @@ function init() : void {
 	add_filter( 'wp_theme_json_data_theme', __NAMESPACE__ . '\\editor_color_palette', 11 );
 
 	add_filter( 'load_script_translation_file', __NAMESPACE__ . '\\translations_location', 10, 3 );
+
+	add_filter( 'register_block_type_args', __NAMESPACE__ . '\\insert_helsinki_block_backgroud_color_attribute', 10, 2 );
+	add_filter( 'render_block_data', __NAMESPACE__ . '\\insert_helsinki_block_backgroud_color_class', 10, 1 );
 }
 
 /**

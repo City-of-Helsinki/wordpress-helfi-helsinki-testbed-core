@@ -4,7 +4,7 @@
 	* Description: Site specific features
 	* Requires at least: 6.0
 	* Requires PHP: 7.4
-	* Version: 3.2.0
+	* Version: 3.2.1
 	* Author: ArtCloud
 	* Author URI: https://www.artcloud.fi
 	* License: MIT License

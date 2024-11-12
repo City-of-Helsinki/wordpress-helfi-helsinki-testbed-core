@@ -16,6 +16,14 @@ $content-overlap-amount-mobile: 32;
 
   .wp-block-media-text__content {
     background-color: var(--primary-color);
+
+    :first-child {
+      margin-top: 0;
+    }
+
+    :last-child {
+      margin-bottom: 0;
+    }
   }
 
   // Apply below styles to the default media text block only

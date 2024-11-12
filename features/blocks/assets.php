@@ -136,7 +136,7 @@ function public_assets() : void {
 
 	wp_enqueue_style(
         $handle . '-public',
-		$is_debug ? $assets . 'public/css/styles.css' : $assets . 'public/css/styles.min.css',
+		$assets . 'public/css/styles.css',
         array( $handle . '-common', 'wp-block-library' ),
         $version
     );

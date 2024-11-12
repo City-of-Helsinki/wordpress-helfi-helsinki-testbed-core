@@ -14,7 +14,7 @@ function init(): void {
 }
 
 function maybe_draft_post_if_excerpt_missing( array $data ): array {
-	if ( should_draft_post( $data ) ) {
+	if ( is_publishable_post( $data ) && should_draft_post( $data ) ) {
 		$data['post_status'] = 'draft';
 	}
 
@@ -24,6 +24,10 @@ function maybe_draft_post_if_excerpt_missing( array $data ): array {
 function should_draft_post( array $data ): bool {
 	return excerpt_required_for_post_type( $data )
 		&& ! has_excerpt( $data );
+}
+
+function is_publishable_post( array $data ): bool {
+	return 'trash' !== $data['post_status'];
 }
 
 function excerpt_required_for_post_type( array $data ): bool {

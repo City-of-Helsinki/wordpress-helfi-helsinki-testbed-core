@@ -13,9 +13,14 @@ use WP_Post;
 use WP_Query;
 
 function render( $attributes, $content ) : string {
+	$query = persons_query( $attributes );
+	if ( ! $query ) {
+		return '';
+	}
+
 	ob_start();
 
-	create_html( $attributes, persons_query( $attributes ) );
+	create_html( $attributes, $query );
 
 	return ob_get_clean();
 }

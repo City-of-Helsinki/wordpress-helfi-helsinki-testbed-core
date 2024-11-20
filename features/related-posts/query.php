@@ -39,7 +39,7 @@ function testbed_content_article_related(): void {
 
 function testbed_content_article_related_query( array $post_ids, array $cat_ids, int $posts_per_page ): \WP_Query {
 	$args = array(
-		'post__not_in' => $post_id,
+		'post__not_in' => $post_ids,
 		'post_type' => 'post',
 		'posts_status' => 'publish',
 		'posts_per_page' => $posts_per_page,

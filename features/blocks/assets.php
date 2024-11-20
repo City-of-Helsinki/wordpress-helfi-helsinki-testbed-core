@@ -105,11 +105,10 @@ function editor_assets() : void {
 	$path = apply_filters( 'helsinki_testbed_core_plugin_path', '' );
 	$assets = apply_filters( 'helsinki_testbed_core_assets_url', '' );
 	$version = apply_filters( 'helsinki_testbed_core_asset_version', false );
-	$is_debug = apply_filters( 'helsinki_testbed_core_is_debug', false );
 
 	wp_enqueue_script(
         $handle . '-admin',
-		$is_debug ? $assets . 'admin/js/scripts.js' : $assets . 'admin/js/scripts.min.js',
+		$assets . 'admin/js/scripts.js',
         array( 'wp-blocks', 'wp-dom' ),
         $version
     );
@@ -118,7 +117,7 @@ function editor_assets() : void {
 
 	wp_enqueue_style(
         $handle . '-admin',
-        $is_debug ? $assets . 'admin/css/styles.css' : $assets . 'admin/css/styles.min.css',
+        $assets . 'admin/css/styles.css',
         array( $handle . '-common', 'wp-editor' ),
         $version
     );
@@ -129,7 +128,6 @@ function editor_assets() : void {
 function public_assets() : void {
 	$handle = apply_filters( 'helsinki_testbed_core_plugin_dirname', '' );
 	$assets = apply_filters( 'helsinki_testbed_core_assets_url', '' );
-	$is_debug = apply_filters( 'helsinki_testbed_core_is_debug', false );
 	$version = apply_filters( 'helsinki_testbed_core_asset_version', '1.0.0' );
 
 	common_assets();
@@ -140,12 +138,4 @@ function public_assets() : void {
         array( $handle . '-common', 'wp-block-library' ),
         $version
     );
-
-	// wp_enqueue_script(
-    //     $handle,
-	// 	$is_debug ? $assets . 'public/js/scripts.js' : $assets . 'public/js/scripts.min.js',
-    //     array(),
-    //     $version,
-	// 	true
-    // );
 }

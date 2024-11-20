@@ -16,7 +16,7 @@ function define_constants(string $file) : void {
 		require_once( ABSPATH . 'wp-admin/includes/plugin.php' );
 	}
 
-	$pluginData = get_plugin_data( $file );
+	$pluginData = get_plugin_data( $file, false, false );
 	$dirname = dirname( $file );
 	$basename = basename( $file );
 	$dirbasename = basename( $dirname );

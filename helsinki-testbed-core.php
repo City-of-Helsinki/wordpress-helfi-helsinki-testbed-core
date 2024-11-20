@@ -4,7 +4,7 @@
 	* Description: Site specific features
 	* Requires at least: 6.0
 	* Requires PHP: 7.4
-	* Version: 3.2.1
+	* Version: 3.2.2
 	* Author: ArtCloud
 	* Author URI: https://www.artcloud.fi
 	* License: MIT License
@@ -37,8 +37,8 @@ add_action( 'plugins_loaded', __NAMESPACE__ . '\\loaded' );
 /**
   * Init
   */
+add_action( 'init', __NAMESPACE__ . '\\textdomain' );
 add_action( 'init', __NAMESPACE__ . '\\init', 100 );
-add_action( 'helsinki_testbed_core_init', __NAMESPACE__ . '\\textdomain' );
 
 /**
   * Activation

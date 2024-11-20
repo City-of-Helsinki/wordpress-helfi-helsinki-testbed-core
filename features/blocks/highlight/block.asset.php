@@ -8,5 +8,5 @@ return array(
         'wp-element',
         'wp-i18n',
     ),
-    'version' => apply_filters( 'reactor_blocks_asset_version', '1.0.0' ),
+    'version' => apply_filters( 'helsinki_testbed_core_asset_version', '1.0.0' ),
 );

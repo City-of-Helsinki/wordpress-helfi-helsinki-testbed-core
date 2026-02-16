@@ -16,6 +16,11 @@ function init(): void {
 function filter_allowed_blocks( array $blocks ): array {
 	if ( isset( $blocks['common'] ) ) {
 		$blocks['common']['core/media-text'] = true;
+
+		$blocks['common']['acf/person-list'] = true;
+		$blocks['common']['hds/highlight'] = true;
+		$blocks['common']['hds/icon-and-text'] = true;
+		$blocks['common']['acf/content-list'] = true;
 	}
 
 	if ( isset( $blocks['post_types']['post'] ) ) {

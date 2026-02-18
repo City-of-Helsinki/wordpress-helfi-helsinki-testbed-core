@@ -10,21 +10,23 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 add_action( 'helsinki_testbed_core_loaded', __NAMESPACE__ . '\\init' );
 function init(): void {
-	add_filter( 'helsinki_wp_disallowed_blocks', __NAMESPACE__ . '\\filter_disallowed_blocks' );
+	add_filter( 'helsinki_wp_allowed_blocks', __NAMESPACE__ . '\\filter_allowed_blocks' );
 }
 
-function filter_disallowed_blocks( array $disallowed ): array {
-	if ( isset( $disallowed['common']['core/media-text'] ) ) {
-		unset( $disallowed['common']['core/media-text'] );
+function filter_allowed_blocks( array $blocks ): array {
+	if ( isset( $blocks['common'] ) ) {
+		$blocks['common']['core/media-text'] = true;
+
+		$blocks['common']['acf/person-list'] = true;
+		$blocks['common']['hds/highlight'] = true;
+		$blocks['common']['hds/icon-and-text'] = true;
+		$blocks['common']['acf/content-list'] = true;
 	}
 
-	if ( isset( $disallowed['post_types']['post']['core/group'] ) ) {
-		unset( $disallowed['post_types']['post']['core/group'] );
+	if ( isset( $blocks['post_types']['post'] ) ) {
+		$blocks['post_types']['post']['core/group'] = array( 'group' );
+		$blocks['post_types']['post']['hds-wp/banner'] = true;
 	}
 
-	if ( isset( $disallowed['post_types']['post']['hds-wp/banner'] ) ) {
-		unset( $disallowed['post_types']['post']['hds-wp/banner'] );
-	}
-
-	return $disallowed;
+	return $blocks;
 }

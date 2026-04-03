@@ -86,25 +86,45 @@ function editor_color_palette( $theme_json ) {
 	return $theme_json->update_with( $data );
 }
 
+function assets_handle_base(): string {
+	return 'helsinki-testbed-core';
+}
+
 function common_assets(): void {
-	$handle = apply_filters( 'helsinki_testbed_core_plugin_dirname', '' );
+	$handle = assets_handle_base();
 	$path = apply_filters( 'helsinki_testbed_core_plugin_path', '' );
 	$assets = apply_filters( 'helsinki_testbed_core_assets_url', '' );
 	$version = apply_filters( 'helsinki_testbed_core_asset_version', false );
+	$debug = apply_filters( 'helsinki_testbed_core_is_debug', false );
 
-	wp_enqueue_style(
+	wp_register_style(
         $handle . '-common',
-        $assets . 'common/css/styles.css',
+        $assets . 'common/css/' . ( $debug ? 'common.css' : 'common.min.css' ),
+        array(),
+        $version
+    );
+
+	wp_register_style(
+        $handle . '-icons',
+        $assets . 'common/css/' . ( $debug ? 'icons.css' : 'icons.min.css' ),
+        array(),
+        $version
+    );
+
+	wp_register_style(
+        $handle . '-blocks',
+        $assets . 'common/css/' . ( $debug ? 'blocks.css' : 'blocks.min.css' ),
         array(),
         $version
     );
 }
 
 function editor_assets() : void {
-	$handle = apply_filters( 'helsinki_testbed_core_plugin_dirname', '' );
+	$handle = assets_handle_base();
 	$path = apply_filters( 'helsinki_testbed_core_plugin_path', '' );
 	$assets = apply_filters( 'helsinki_testbed_core_assets_url', '' );
 	$version = apply_filters( 'helsinki_testbed_core_asset_version', false );
+	$debug = apply_filters( 'helsinki_testbed_core_is_debug', false );
 
 	wp_enqueue_script(
         $handle . '-admin',
@@ -115,27 +135,26 @@ function editor_assets() : void {
 
 	common_assets();
 
-	wp_enqueue_style(
-        $handle . '-admin',
-        $assets . 'admin/css/styles.css',
-        array( $handle . '-common', 'wp-editor' ),
-        $version
-    );
-
 	wp_set_script_translations( 'helsinki-testbed-core', 'helsinki-testbed-core', $path . 'languages' );
 }
 
 function public_assets() : void {
-	$handle = apply_filters( 'helsinki_testbed_core_plugin_dirname', '' );
+	$handle = assets_handle_base();
 	$assets = apply_filters( 'helsinki_testbed_core_assets_url', '' );
-	$version = apply_filters( 'helsinki_testbed_core_asset_version', '1.0.0' );
+	$version = apply_filters( 'helsinki_testbed_core_asset_version', false );
+	$debug = apply_filters( 'helsinki_testbed_core_is_debug', false );
 
 	common_assets();
 
 	wp_enqueue_style(
         $handle . '-public',
-		$assets . 'public/css/styles.css',
-        array( $handle . '-common', 'wp-block-library' ),
+		$assets . 'public/css/' . ( $debug ? 'styles.css' : 'styles.min.css' ),
+        array(
+			$handle . '-icons',
+			$handle . '-common',
+			$handle . '-blocks',
+			'wp-block-library'
+		),
         $version
     );
 }

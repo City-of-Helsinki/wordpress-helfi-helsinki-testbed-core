@@ -4,14 +4,14 @@
     flex-wrap: wrap;
   }
 
-  .teaser--person {
+  .teaser.teaser--person {
     flex: 0 0 100%;
     margin-bottom: $spacing-layout-m;
   }
 
   &.layout-horizontal {
     .wp-block-person-list__entries {
-      .teaser--person {
+      .teaser.teaser--person {
         @include breakpoint('medium') {
           flex-basis: 50%;
         }
@@ -21,7 +21,7 @@
 
   &.layout-vertical {
     .wp-block-person-list__entries {
-      .teaser--person {
+      .teaser.teaser--person {
         @include breakpoint('medium') {
           flex-basis: 50%;
         }
@@ -60,7 +60,7 @@ body.has-sidebar {
   .wp-block-person-list {
     &.layout-horizontal {
       .wp-block-person-list__entries {
-        .teaser--person {
+        .teaser.teaser--person {
           @include breakpoint('large') {
             flex-basis: 100%;
           }
@@ -76,7 +76,7 @@ body.has-sidebar {
 
     &.layout-vertical {
       .wp-block-person-list__entries {
-        .teaser--person {
+        .teaser.teaser--person {
           @include breakpoint('large') {
             flex-basis: 50%;
           }

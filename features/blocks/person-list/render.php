@@ -34,6 +34,7 @@ function create_html( array $attributes, WP_Query $query ): void {
 		);
 
 		$block_classes = array_filter( array(
+			'wp-block-helsinki',
 			'wp-block-person-list',
 			$attributes['className'] ?? '',
 			'layout-' . $layout,
@@ -65,9 +66,7 @@ function person_entry( WP_Post $post, string $layout ): void {
 	$id = get_the_ID( $post );
 	$post_type = get_post_type( $post );
 	$title = get_the_title( $post );
-	$thumbnail = get_the_post_thumbnail( $post, 'post-thumbnail', [
-		'sizes' => '(max-width: 640px) 100vw, (max-width: 1024px) 33vw, 216px'
-	]);
+	$thumbnail = get_the_post_thumbnail( $post, 'large');
 	$placeholder_url = apply_filters( 'helsinki_testbed_core_images_url', '' ) . 'person-placeholder.png';
 
 	$entry_classes = [

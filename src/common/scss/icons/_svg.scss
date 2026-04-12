@@ -1,3 +1,5 @@
+@use 'sass:map';
+
 $svg-icons: (
   'book': "data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M16.298 5.225h-.222V0H12.67a4.615 4.615 0 0 0-4.615 4.615v.61H.55v16.929h7.274a5.04 5.04 0 0 1 3.692 1.283l.47.47.047.093a5.188 5.188 0 0 1 4.246-1.846h7.293V5.224Zm-6.286-.61a2.658 2.658 0 0 1 2.658-2.658h1.44v11.372h-1.44a4.523 4.523 0 0 0-2.658.859zm0 13.339a2.714 2.714 0 0 1 1.098-2.114v4.468l-.295-.296a3.065 3.065 0 0 1-.776-1.947zm-7.496 2.27V7.183h5.539v10.763a5.243 5.243 0 0 0 .553 2.307h-.784zm19.099 0h-5.308a7.745 7.745 0 0 0-3.268.638v-5.539h3.037V7.191h5.539z' fill-rule='evenodd'/%3E%3C/svg%3E",
   'calendar-clock': "data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M17 12a6 6 0 1 1 0 12 6 6 0 0 1 0-12zm0 2a4 4 0 1 0 0 8 4 4 0 0 0 0-8zm0-12a1 1 0 0 1 1 1v1h4l.002 9.103A7.018 7.018 0 0 0 20 11.674V11H4v8l6.071.001a6.95 6.95 0 0 0 .603 2L2 21V4h4V3a1 1 0 1 1 2 0v1h8V3a1 1 0 0 1 1-1zm.5 13v2.94l1.53 1.53-1.06 1.06L16 18.56V15h1.5zM20 6H4v3h16V6z' fill-rule='evenodd'/%3E%3C/svg%3E",
@@ -12,6 +14,6 @@ $svg-icons: (
 );
 
 @mixin inline-svg($name) {
-	-webkit-mask-image: url(map-get( $svg-icons, $name ));
-	mask-image: url(map-get( $svg-icons, $name ));
+	-webkit-mask-image: url(map.get( $svg-icons, $name ));
+	mask-image: url(map.get( $svg-icons, $name ));
 }

@@ -1,12 +1,14 @@
 .wp-block-person-list {
+  @extend %helsinki-block-spacing;
+
   .wp-block-person-list__entries {
     display: flex;
     flex-wrap: wrap;
+    gap: $spacing-layout-m 0;
   }
 
   .teaser.teaser--person {
     flex: 0 0 100%;
-    margin-bottom: $spacing-layout-m;
   }
 
   &.layout-horizontal {

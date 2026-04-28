@@ -12,6 +12,7 @@ use CityOfHelsinki\WordPress\Testbed\Core\Features\Blocks;
 
 function render( $attributes, $content ) : string {
 	$classes = array_filter( array(
+		'wp-block-helsinki',
 		'wp-block-hds-highlight',
 		$attributes['className'] ?? '',
 	) );

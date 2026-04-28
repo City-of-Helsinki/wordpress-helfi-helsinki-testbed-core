@@ -1,5 +1,8 @@
 .wp-block-content-list {
-  margin: $spacing-layout-m 0;
+  @extend %helsinki-block-spacing;
+
+  margin-left: 0;
+  margin-right: 0;
 
   &__title {
     margin-top: 0;

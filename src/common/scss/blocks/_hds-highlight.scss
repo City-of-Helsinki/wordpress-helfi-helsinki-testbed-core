@@ -1,6 +1,6 @@
 .wp-block-hds-highlight {
-  margin-top: $spacing-2-xl;
-  margin-bottom: $spacing-2-xl;
+  @extend %helsinki-block-spacing;
+
   padding: 20px;
 
   @include breakpoint('small') {
@@ -8,8 +8,6 @@
   }
 
   @include breakpoint('medium') {
-    margin-top: $spacing-3-xl;
-    margin-bottom: $spacing-3-xl;
     padding: 30px;
   }
 
@@ -18,8 +16,6 @@
   }
 
   @include breakpoint('xlarge') {
-    margin-top: $spacing-5-xl;
-    margin-bottom: $spacing-5-xl;
     padding: 50px;
   }
 

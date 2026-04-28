@@ -13,8 +13,35 @@ import fs from 'fs';
 import path from 'path';
 import merge from 'merge-stream';
 
-const ASSETS = 'assets';
-const SOURCE = 'src';
+const DIST = {
+  admin: {
+    scripts: 'assets/admin/js',
+    styles: 'assets/admin/css',
+  },
+  common: {
+    scripts: 'assets/common/js',
+    styles: 'assets/common/css',
+  },
+  public: {
+    scripts: 'assets/public/js',
+    styles: 'assets/public/css',
+  },
+};
+
+const SOURCE = {
+  admin: {
+    scripts: 'src/admin/js/**/*.js',
+    styles: 'src/admin/scss/**/*.scss',
+  },
+  common: {
+    scripts: 'src/common/js/**/*.js',
+    styles: 'src/common/scss/**/*.scss',
+  },
+  public: {
+    scripts: 'src/public/js/**/*.js',
+    styles: 'src/public/scss/**/*.scss',
+  },
+};
 
 const sass = gulpSass(dartSass);
 const sassOptions = {
@@ -28,51 +55,68 @@ const cssOptions = {
   }
 };
 
-// https://stackoverflow.com/questions/45446626/concatenate-and-rename-files-based-on-directory-name-with-gulp
-// https://github.com/gulpjs/gulp/blob/v3.9.1/docs/recipes/running-task-steps-per-folder.md
-function getFolders(dir) {
-  return fs.readdirSync(dir)
-    .filter(function(file) {
-      return fs.statSync(path.join(dir, file)).isDirectory();
-    });
+function handleScripts(type) {
+  return gulp.src(SOURCE[type].scripts)
+		.pipe(concat('scripts.js'))
+		.pipe(babel({
+			presets: ["@babel/preset-env"]
+		}))
+    .pipe(gulp.dest(DIST[type].scripts))
+		.pipe(uglify())
+		.pipe(rename('scripts.min.js'))
+		.pipe(gulp.dest(DIST[type].scripts));
 }
 
-function mapFolders(callback) {
-	return merge(
-		getFolders(SOURCE).map(callback)
-	);
+function handleStyles(type) {
+  return gulp.src(SOURCE[type].styles)
+    .pipe(sass(sassOptions).on('error', sass.logError))
+    .pipe(prefix())
+    .pipe(cleanCSS(cssOptions))
+    .pipe(gulp.dest(DIST[type].styles))
+    .pipe(rename({ suffix: '.min' }))
+    .pipe(gulp.dest(DIST[type].styles))
 }
 
-gulp.task('scripts', function () {
-	return mapFolders(function(folder) {
-    return gulp.src(path.join(SOURCE, folder, '/js/**/*.js'))
-      .pipe(concat(folder + '/js/scripts.js'))
-			.pipe(babel({
-	      presets: ["@babel/preset-env"]
-	    }))
-      .pipe(gulp.dest(ASSETS))
-      .pipe(uglify())
-      .pipe(rename(folder + '/js/scripts.min.js'))
-      .pipe(gulp.dest(ASSETS));
-   });
+gulp.task('adminScripts', () => handleScripts('admin'));
+gulp.task('adminStyles', () => handleStyles('admin'));
+
+// gulp.task('commonScripts', () => handleScripts('common'));
+gulp.task('commonStyles', () => handleStyles('common'));
+
+// gulp.task('publicScripts', () => handleScripts('public'));
+gulp.task('publicStyles', () => handleStyles('public'));
+
+gulp.task('watchAdmin',function() {
+  // gulp.watch(SOURCE.admin.styles, gulp.parallel('adminStyles'));
+  gulp.watch(SOURCE.admin.scripts, gulp.parallel('adminScripts'));
 });
 
-gulp.task('styles', function () {
-	return mapFolders(function(folder) {
-		return gulp.src(path.join(SOURCE, folder, '/scss/**/*.scss'))
-			.pipe(sass(sassOptions).on('error', sass.logError))
-			.pipe(concat(folder + '/css/styles.css'))
-			.pipe(prefix())
-      .pipe(gulp.dest(ASSETS))
-			.pipe(cleanCSS(cssOptions))
-			.pipe(rename(folder + '/css/styles.min.css'))
-			.pipe(gulp.dest(ASSETS));
-	});
+gulp.task('watchCommon',function() {
+  gulp.watch(SOURCE.common.styles, gulp.parallel('commonStyles'));
+  // gulp.watch(SOURCE.common.scripts, gulp.parallel('commonScripts'));
 });
 
-gulp.task('watch', function () {
-  gulp.watch(SOURCE, gulp.parallel('styles'));
-  gulp.watch(SOURCE, gulp.parallel('scripts'));
+gulp.task('watchPublic',function() {
+  gulp.watch(SOURCE.public.styles, gulp.parallel('publicStyles'));
+  // gulp.watch(SOURCE.public.scripts, gulp.parallel('publicScripts'));
 });
 
-gulp.task('default', gulp.parallel('styles', 'scripts'));
+gulp.task('watch',function() {
+  // gulp.watch(SOURCE.admin.styles, gulp.parallel('adminStyles'));
+  gulp.watch(SOURCE.admin.scripts, gulp.parallel('adminScripts'));
+
+  gulp.watch(SOURCE.common.styles, gulp.parallel('commonStyles'));
+  // gulp.watch(SOURCE.common.scripts, gulp.parallel('commonScripts'));
+
+  gulp.watch(SOURCE.public.styles, gulp.parallel('publicStyles'));
+  // gulp.watch(SOURCE.public.scripts, gulp.parallel('publicScripts'));
+});
+
+gulp.task('default', gulp.parallel(
+  // 'adminStyles',
+  'adminScripts',
+  'commonStyles',
+  // 'commonScripts',
+  'publicStyles',
+  // 'publicScripts'
+));

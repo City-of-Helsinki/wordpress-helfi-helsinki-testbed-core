@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "main": "gulpfile.js",
   "devDependencies": {
-    "@babel/core": "^7.28.5",
-    "@babel/preset-env": "^7.28.5",
+    "@babel/core": "^7.29.0",
+    "@babel/preset-env": "^7.29.2",
     "babel-polyfill": "^6.26.0",
     "fs": "*",
     "gulp": "^5.0.1",
@@ -17,7 +17,7 @@
     "gulp-uglify": "^3.0.2",
     "merge-stream": "^2.0.0",
     "path": "^0.12.7",
-    "sass": "^1.94.2"
+    "sass": "^1.99.0"
   },
   "browserslist": [
     "defaults"

@@ -1,5 +1,9 @@
 .wp-block-hds-icon-and-text {
-  margin-bottom: $spacing-layout-s;
+  @extend %helsinki-block-spacing;
+
+  --margin-top: #{$spacing-layout-s};
+  --margin-bottom: #{$spacing-layout-s};
+
   text-align: center;
 
   &.has-background {

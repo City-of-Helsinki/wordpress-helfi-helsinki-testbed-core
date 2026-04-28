@@ -1,5 +1,5 @@
 {
-  "apiVersion": 2,
+  "apiVersion": 3,
   "icon": "align-pull-left",
   "name": "hds/icon-and-text",
   "description": "Display an icon and text",
@@ -37,5 +37,10 @@
       "default": ""
     }
   },
-  "editorScript": "file:block.js"
+  "editorScript": "file:block.js",
+  "style": [
+    "helsinki-testbed-core-common",
+    "helsinki-testbed-core-icons",
+    "helsinki-testbed-core-blocks"
+  ]
 }

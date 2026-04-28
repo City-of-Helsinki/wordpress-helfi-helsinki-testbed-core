@@ -1,0 +1,12 @@
+%helsinki-block-spacing {
+  --margin-top: var(--spacing-layout-s, 2rem);
+  --margin-bottom: var(--spacing-layout-s, 2rem);
+
+  margin-top: var(--margin-top);
+  margin-bottom: var(--margin-bottom);
+
+  @include breakpoint('medium') {
+    --margin-top: var(--spacing-layout-l, 4rem);
+    --margin-bottom: var(--spacing-layout-l, 4rem);
+  }
+}

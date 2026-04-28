@@ -26,6 +26,7 @@ function create_html( array $attributes, WP_Query $query ): void {
 		$block_id = use_pagination( $attributes ) ? 'listing' : $block_anchor;
 
 		$block_classes = array_filter( array(
+			'wp-block-helsinki',
 			'wp-block-content-list',
 			$attributes['className'] ?? '',
 		) );
